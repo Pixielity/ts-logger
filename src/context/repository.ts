@@ -2,8 +2,8 @@ import { injectable } from 'inversify'
 import type { IContextManagement } from '../interfaces/context/management.interface'
 import type { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface'
 import type { LogContext } from '../types/types'
-import { ContextDehydratingEvent } from './events/context-dehydrating.event'
-import { ContextHydratedEvent } from './events/context-hydrated.event'
+import { ContextDehydratingEvent } from './events/dehydrating.event'
+import { ContextHydratedEvent } from './events/hydrated.event'
 
 /**
  * ContextRepository is an implementation of the IContextManagement interface.

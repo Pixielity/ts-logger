@@ -1,0 +1,19 @@
+'use strict';
+
+/**
+ * @pixielity/ts-log v1.0.4
+ * 
+ * Advanced TypeScript type utilities with metadata inheritance support
+ * 
+ * @license MIT
+ * @copyright 2025 Your Name <your.email@example.com>
+ */
+
+
+// src/interfaces/handlers/slack-webhook-handler.interface.ts
+exports.ISlackWebhookHandler = void 0;
+((ISlackWebhookHandler2) => {
+  ISlackWebhookHandler2.$ = Symbol.for("ISlackWebhookHandler");
+})(exports.ISlackWebhookHandler || (exports.ISlackWebhookHandler = {}));
+//# sourceMappingURL=slack-webhook-handler.interface.js.map
+//# sourceMappingURL=slack-webhook-handler.interface.js.map

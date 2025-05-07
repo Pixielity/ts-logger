@@ -4,7 +4,6 @@ import type { IStackChannel } from '../interfaces/channels/stack-channel.interfa
 import type { ILoggingChannel } from '../interfaces/channels/logging-channel.interface'
 import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface'
 import type { LogContext, LogRecord } from '../types/types'
-import { TYPES } from '../types/types'
 
 /**
  * StackChannel is an implementation of the IStackChannel interface.
