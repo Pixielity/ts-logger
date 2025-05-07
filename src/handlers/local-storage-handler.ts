@@ -1,6 +1,7 @@
 import { injectable } from 'inversify'
+
+import type { LogRecord } from '../types/log-record.type'
 import type { ILocalStorageHandler } from '../interfaces/handlers/local-storage-handler.interface'
-import type { LogRecord } from '../types/types'
 
 /**
  * LocalStorageHandler is an implementation of the ILocalStorageHandler interface.

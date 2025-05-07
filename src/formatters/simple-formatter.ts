@@ -1,8 +1,9 @@
 import { injectable } from 'inversify'
-import type { ISimpleFormatter } from '../interfaces/formatters/simple-formatter.interface'
-import type { LogRecord } from '../types/types'
-import { FormatterType } from '../enums/formatter-type.enum'
+
+import type { LogRecord } from '../types/log-record.type'
 import { LogLevelColor, LogLevelEmoji } from '../constants'
+import { FormatterType } from '../enums/formatter-type.enum'
+import type { ISimpleFormatter } from '../interfaces/formatters/simple-formatter.interface'
 
 /**
  * SimpleFormatter is an implementation of the ISimpleFormatter interface.

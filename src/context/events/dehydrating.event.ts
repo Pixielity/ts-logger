@@ -1,5 +1,5 @@
 import type { IContextDehydrating } from '../../interfaces/events/dehydrating.interface'
-import type { LogContext } from '../../types/types'
+import type { LogContext } from '../../types/log-context.type'
 
 /**
  * ContextDehydratingEvent is an implementation of the IContextDehydrating interface.

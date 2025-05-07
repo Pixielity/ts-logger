@@ -1,9 +1,10 @@
 import { injectable } from 'inversify'
-import type { IConsoleHandler } from '../interfaces/handlers/console-handler.interface'
-import type { LogRecord } from '../types/types'
-import { HandlerType } from '../enums/handler-type.enum'
-import { LogLevelColor, LogLevelEmoji } from '../constants'
+
 import { LogLevel } from '../enums'
+import { HandlerType } from '../enums/handler-type.enum'
+import type { LogRecord } from '../types/log-record.type'
+import { LogLevelColor, LogLevelEmoji } from '../constants'
+import type { IConsoleHandler } from '../interfaces/handlers/console-handler.interface'
 
 /**
  * ConsoleHandler is an implementation of the IConsoleHandler interface.

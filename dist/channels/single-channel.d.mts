@@ -1,9 +1,10 @@
+import { LogRecord } from '../types/log-record.type.mjs';
+import { LogContext } from '../types/log-context.type.mjs';
 import { LogLevel } from '../enums/log-level.enum.mjs';
-import { ISingleChannel } from '../interfaces/channels/single-channel.interface.mjs';
 import { ILogHandler } from '../interfaces/handlers/log-handler.interface.mjs';
+import { ISingleChannel } from '../interfaces/channels/single-channel.interface.mjs';
 import { ILogFormatter } from '../interfaces/formatters/log-formatter.interface.mjs';
 import { ILogProcessor } from '../interfaces/processors/log-processor.interface.mjs';
-import { LogContext, LogRecord } from '../types/types.mjs';
 import '../interfaces/channels/logging-channel.interface.mjs';
 
 /**

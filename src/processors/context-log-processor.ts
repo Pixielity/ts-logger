@@ -1,7 +1,8 @@
 import { injectable } from 'inversify'
-import type { IContextLogProcessor } from '../interfaces/processors/context-log-processor.interface'
-import type { LogContext, LogRecord } from '../types/types'
+
+import type { LogContext, LogRecord } from '../types'
 import { ProcessorType } from '../enums/processor-type.enum'
+import type { IContextLogProcessor } from '../interfaces/processors/context-log-processor.interface'
 
 /**
  * ContextLogProcessor is an implementation of the IContextLogProcessor interface.

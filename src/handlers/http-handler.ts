@@ -1,6 +1,7 @@
 import { injectable } from 'inversify'
+
+import type { LogRecord } from '../types/log-record.type'
 import type { IHttpHandler } from '../interfaces/handlers/http-handler.interface'
-import type { LogRecord } from '../types/types'
 
 /**
  * HttpHandler is an implementation of the IHttpHandler interface.

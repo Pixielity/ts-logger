@@ -1,5 +1,6 @@
+import { LogRecord } from '../types/log-record.type.js';
 import { IJsonFormatter } from '../interfaces/formatters/json-formatter.interface.js';
-import { LogRecord } from '../types/types.js';
+import '../types/log-context.type.js';
 import '../interfaces/formatters/log-formatter.interface.js';
 
 /**

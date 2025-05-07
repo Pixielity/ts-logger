@@ -8,4 +8,5 @@ export { ILogHandler } from './log-handler.interface.js';
 export { ISlackWebhookHandler } from './slack-webhook-handler.interface.js';
 export { ISyslogHandler } from './syslog-handler.interface.js';
 import '../../enums/log-level.enum.js';
-import '../../types/types.js';
+import '../../types/log-record.type.js';
+import '../../types/log-context.type.js';

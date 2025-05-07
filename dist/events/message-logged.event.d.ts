@@ -1,6 +1,6 @@
-import { IMessageLogged } from '../interfaces/events/message-logged.interface.js';
 import { LogLevel } from '../enums/log-level.enum.js';
-import { LogContext } from '../types/types.js';
+import { LogContext } from '../types/log-context.type.js';
+import { IMessageLogged } from '../interfaces/events/message-logged.interface.js';
 import '../interfaces/events/log-event.interface.js';
 
 /**

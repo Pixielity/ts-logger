@@ -1,6 +1,7 @@
-import { ILineFormatter } from '../interfaces/formatters/line-formatter.interface.mjs';
-import { LogRecord } from '../types/types.mjs';
 import { DateFormat } from '../enums/date-format.enum.mjs';
+import { LogRecord } from '../types/log-record.type.mjs';
+import { ILineFormatter } from '../interfaces/formatters/line-formatter.interface.mjs';
+import '../types/log-context.type.mjs';
 import '../interfaces/formatters/log-formatter.interface.mjs';
 
 /**

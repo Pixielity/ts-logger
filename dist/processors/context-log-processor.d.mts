@@ -1,5 +1,6 @@
+import { LogRecord } from '../types/log-record.type.mjs';
+import { LogContext } from '../types/log-context.type.mjs';
 import { IContextLogProcessor } from '../interfaces/processors/context-log-processor.interface.mjs';
-import { LogContext, LogRecord } from '../types/types.mjs';
 import '../interfaces/processors/log-processor.interface.mjs';
 
 /**

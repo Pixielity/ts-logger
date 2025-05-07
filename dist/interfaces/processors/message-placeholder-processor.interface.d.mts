@@ -1,5 +1,6 @@
 import { ILogProcessor } from './log-processor.interface.mjs';
-import '../../types/types.mjs';
+import '../../types/log-record.type.mjs';
+import '../../types/log-context.type.mjs';
 
 /**
  * IMessagePlaceholderProcessor defines the contract for message placeholder processors.

@@ -1,5 +1,5 @@
-import { postConstruct, injectable } from 'inversify';
 import Dexie from 'dexie';
+import { postConstruct, injectable } from 'inversify';
 
 /**
  * @pixielity/ts-log v1.0.4

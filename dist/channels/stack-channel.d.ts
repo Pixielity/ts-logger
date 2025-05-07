@@ -1,9 +1,11 @@
+import { LogRecord } from '../types/log-record.type.js';
+import { LogContext } from '../types/log-context.type.js';
 import { LogLevel } from '../enums/log-level.enum.js';
+import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface.js';
 import { IStackChannel } from '../interfaces/channels/stack-channel.interface.js';
 import { ILoggingChannel } from '../interfaces/channels/logging-channel.interface.js';
-import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface.js';
-import { LogContext, LogRecord } from '../types/types.js';
 import '../interfaces/events/log-event.interface.js';
+import '../types/log-listener.type.js';
 
 /**
  * StackChannel is an implementation of the IStackChannel interface.

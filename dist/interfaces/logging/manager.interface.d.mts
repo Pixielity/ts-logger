@@ -1,7 +1,11 @@
-import { ILoggingService } from './logging-service.interface.mjs';
+import { LogContext } from '../../types/log-context.type.mjs';
+import { HandlerOptions } from '../../types/handler-options.type.mjs';
+import { ChannelOptions } from '../../types/channel-options.type.mjs';
+import { FormatterOptions } from '../../types/formatter-options.type.mjs';
+import { ProcessorOptions } from '../../types/processor-options.type.mjs';
 import { LogLevel } from '../../enums/log-level.enum.mjs';
+import { ILoggingService } from './logging-service.interface.mjs';
 import { LogChannelType } from '../../enums/log-channel-type.enum.mjs';
-import { LogContext, ChannelOptions, HandlerOptions, FormatterOptions, ProcessorOptions } from '../../types/types.mjs';
 
 /**
  * ILogManager defines the contract for log managers.

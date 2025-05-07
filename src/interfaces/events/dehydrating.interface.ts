@@ -1,5 +1,5 @@
 import type { ILogEvent } from './log-event.interface'
-import type { LogContext } from '../../types/types'
+import type { LogContext } from '../../types/log-context.type'
 
 /**
  * IContextDehydrating defines the contract for context dehydrating events.

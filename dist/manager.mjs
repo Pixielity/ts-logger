@@ -109,6 +109,7 @@ var Logger = class {
    */
   constructor(injectableChannel, eventDispatcher) {
     this._context = {};
+    console.log("=======>>>>>>>>>", injectableChannel);
     this._channel = injectableChannel;
     this._eventDispatcher = eventDispatcher;
   }
@@ -552,25 +553,25 @@ var LogManager = class {
    * @param name The channel name
    */
   channel(name) {
-    const channelName = name || this._defaultChannel;
-    if (!this._channels[channelName]) {
-      throw new Error(`Channel [${channelName}] not found.`);
-    }
-    return this._channels[channelName];
+    return this.driver(name);
   }
   /**
    * Get the stack channel with the specified name
    * @param name The stack name
    */
   stack(name) {
-    return this.channel(name);
+    return this.driver(name);
   }
   /**
    * Get the driver with the specified name
    * @param name The driver name
    */
   driver(name) {
-    return this.channel(name);
+    const channelName = name || this._defaultChannel;
+    if (!this._channels[channelName]) {
+      throw new Error(`Channel [${channelName}] not found.`);
+    }
+    return this._channels[channelName];
   }
   /**
    * Extend the logging system with a custom driver creator

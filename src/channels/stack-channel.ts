@@ -1,9 +1,10 @@
 import { injectable, inject } from 'inversify'
+
+import type { LogContext, LogRecord } from '../types'
 import type { LogLevel } from '../enums/log-level.enum'
+import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface'
 import type { IStackChannel } from '../interfaces/channels/stack-channel.interface'
 import type { ILoggingChannel } from '../interfaces/channels/logging-channel.interface'
-import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface'
-import type { LogContext, LogRecord } from '../types/types'
 
 /**
  * StackChannel is an implementation of the IStackChannel interface.

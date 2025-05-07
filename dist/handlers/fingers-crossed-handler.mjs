@@ -18,7 +18,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 
-// src/constants/constants.ts
+// src/constants/log-level-value.constant.ts
 var LogLevelValue = {
   ["emergency" /* EMERGENCY */]: 800,
   ["alert" /* ALERT */]: 700,

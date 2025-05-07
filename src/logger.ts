@@ -1,11 +1,11 @@
 import { inject, injectable } from 'inversify'
 
-import type { LogContext } from './types/types'
 import { LogLevel } from './enums/log-level.enum'
+import type { LogContext } from './types/log-context.type'
 import { MessageLoggedEvent } from './events/message-logged.event'
+import { IEventDispatcher } from './interfaces/events/event-dispatcher.interface'
 import type { ILoggingService } from './interfaces/logging/logging-service.interface'
 import type { ILoggingChannel } from './interfaces/channels/logging-channel.interface'
-import { IEventDispatcher } from './interfaces/events/event-dispatcher.interface'
 
 /**
  * Logger is the main implementation of the ILoggingService interface.
@@ -26,6 +26,7 @@ export class Logger implements ILoggingService {
     injectableChannel: ILoggingChannel,
     @inject(IEventDispatcher.$) eventDispatcher: IEventDispatcher,
   ) {
+    console.log('=======>>>>>>>>>', injectableChannel)
     this._channel = injectableChannel
     this._eventDispatcher = eventDispatcher
   }

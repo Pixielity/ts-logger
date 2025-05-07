@@ -1,6 +1,7 @@
 import { IHttpHandler } from './http-handler.interface.mjs';
 import './log-handler.interface.mjs';
-import '../../types/types.mjs';
+import '../../types/log-record.type.mjs';
+import '../../types/log-context.type.mjs';
 
 /**
  * ISlackWebhookHandler defines the contract for Slack webhook handlers.

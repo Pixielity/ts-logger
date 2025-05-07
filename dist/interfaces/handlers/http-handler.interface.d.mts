@@ -1,5 +1,6 @@
 import { ILogHandler } from './log-handler.interface.mjs';
-import '../../types/types.mjs';
+import '../../types/log-record.type.mjs';
+import '../../types/log-context.type.mjs';
 
 /**
  * IHttpHandler defines the contract for HTTP handlers.

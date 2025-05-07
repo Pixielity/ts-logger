@@ -1,7 +1,8 @@
-import { IFingersCrossedHandler } from '../interfaces/handlers/fingers-crossed-handler.interface.mjs';
-import { ILogHandler } from '../interfaces/handlers/log-handler.interface.mjs';
 import { LogLevel } from '../enums/log-level.enum.mjs';
-import { LogRecord } from '../types/types.mjs';
+import { LogRecord } from '../types/log-record.type.mjs';
+import { ILogHandler } from '../interfaces/handlers/log-handler.interface.mjs';
+import { IFingersCrossedHandler } from '../interfaces/handlers/fingers-crossed-handler.interface.mjs';
+import '../types/log-context.type.mjs';
 
 /**
  * FingersCrossedHandler is an implementation of the IFingersCrossedHandler interface.

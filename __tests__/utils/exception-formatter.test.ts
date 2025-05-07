@@ -4,50 +4,55 @@ describe('ExceptionFormatter', () => {
   let exceptionFormatter: ExceptionFormatter
 
   beforeEach(() => {
-    // Create exception formatter instance
+    // Create a new instance before each test
     exceptionFormatter = new ExceptionFormatter({
       colorSupport: true,
     })
   })
 
-  test('should format an exception', () => {
+  test('should format an exception', async () => {
     const error = new Error('Test error')
 
-    const result = exceptionFormatter.format(error)
+    // Await the result because `.format` is async
+    const result = await exceptionFormatter.format(error)
 
-    // Verify the result contains the error message
+    // Expect error message to be part of the result
     expect(result).toContain('Error: Test error')
-    // Verify the result contains the stack trace
+    // Expect at least one stack trace line to exist
     expect(result).toContain('at ')
   })
 
-  test('should get the stack trace from an exception', () => {
+  test('should get the stack trace from an exception', async () => {
     const error = new Error('Test error')
 
-    const result = exceptionFormatter.getStackTrace(error)
+    // Await the result because `.getStackTrace` is async
+    const result = await exceptionFormatter.getStackTrace(error)
 
-    // Verify the result contains the stack trace
+    // Validate the stack trace content
     expect(result).toContain('at ')
   })
 
   test('should enable and disable color support', () => {
+    // Confirm color is enabled by default (via constructor)
     expect(exceptionFormatter.isColorSupportEnabled()).toBe(true)
 
+    // Disable color
     exceptionFormatter.setColorSupport(false)
 
+    // Confirm it is now disabled
     expect(exceptionFormatter.isColorSupportEnabled()).toBe(false)
   })
 
   test('should format an exception with color support', async () => {
     const error = new Error('Test error')
 
-    // Enable color support
+    // Explicitly enable color support
     exceptionFormatter.setColorSupport(true)
 
-    const result = exceptionFormatter.format(error)
+    const result = await exceptionFormatter.format(error)
 
-    // Verify the result contains the color formatting
-    expect((await result).startsWith('%c')).toBe(true)
+    // If color is supported, the result should start with %c
+    expect(result.startsWith('%c')).toBe(true)
   })
 
   test('should format an exception without color support', async () => {
@@ -56,9 +61,9 @@ describe('ExceptionFormatter', () => {
     // Disable color support
     exceptionFormatter.setColorSupport(false)
 
-    const result = exceptionFormatter.format(error)
+    const result = await exceptionFormatter.format(error)
 
-    // Verify the result does not contain the color formatting
-    expect((await result).startsWith('%c')).toBe(false)
+    // No %c should be present at the start
+    expect(result.startsWith('%c')).toBe(false)
   })
 })

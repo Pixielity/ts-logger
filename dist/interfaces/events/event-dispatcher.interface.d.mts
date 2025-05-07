@@ -1,5 +1,5 @@
 import { ILogEvent } from './log-event.interface.mjs';
-import { LogListener } from '../../types/types.mjs';
+import { LogListener } from '../../types/log-listener.type.mjs';
 
 /**
  * IEventDispatcher defines the contract for event dispatchers.

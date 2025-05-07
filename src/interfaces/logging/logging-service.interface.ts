@@ -1,5 +1,5 @@
 import type { LogLevel } from '../../enums/log-level.enum'
-import type { LogContext } from '../../types/types'
+import type { LogContext } from '../../types/log-context.type'
 
 /**
  * ILoggingService defines the contract for logging services.

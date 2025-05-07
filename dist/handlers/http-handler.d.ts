@@ -1,5 +1,6 @@
+import { LogRecord } from '../types/log-record.type.js';
 import { IHttpHandler } from '../interfaces/handlers/http-handler.interface.js';
-import { LogRecord } from '../types/types.js';
+import '../types/log-context.type.js';
 import '../interfaces/handlers/log-handler.interface.js';
 
 /**

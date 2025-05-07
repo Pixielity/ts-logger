@@ -1,5 +1,6 @@
 import { LogLevel } from '../../enums/log-level.enum.mjs';
-import { LogContext, LogRecord } from '../../types/types.mjs';
+import { LogRecord } from '../../types/log-record.type.mjs';
+import { LogContext } from '../../types/log-context.type.mjs';
 
 /**
  * ILoggingChannel defines the contract for logging channels.

@@ -1,9 +1,11 @@
-import { LogContext } from './types/types.js';
 import { LogLevel } from './enums/log-level.enum.js';
+import { LogContext } from './types/log-context.type.js';
+import { IEventDispatcher } from './interfaces/events/event-dispatcher.interface.js';
 import { ILoggingService } from './interfaces/logging/logging-service.interface.js';
 import { ILoggingChannel } from './interfaces/channels/logging-channel.interface.js';
-import { IEventDispatcher } from './interfaces/events/event-dispatcher.interface.js';
 import './interfaces/events/log-event.interface.js';
+import './types/log-listener.type.js';
+import './types/log-record.type.js';
 
 /**
  * Logger is the main implementation of the ILoggingService interface.

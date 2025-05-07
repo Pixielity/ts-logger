@@ -112,34 +112,6 @@ var JsonFormatter = class {
 JsonFormatter = __decorateClass([
   injectable()
 ], JsonFormatter);
-var LogLevelEmoji = {
-  ["emergency" /* EMERGENCY */]: "\u{1F6A8}",
-  ["alert" /* ALERT */]: "\u{1F514}",
-  ["critical" /* CRITICAL */]: "\u2757",
-  ["error" /* ERROR */]: "\u{1F534}",
-  ["warning" /* WARNING */]: "\u26A0\uFE0F",
-  ["notice" /* NOTICE */]: "\u{1F4DD}",
-  ["info" /* INFO */]: "\u2705",
-  ["debug" /* DEBUG */]: "\u{1F6E0}\uFE0F"
-};
-var LogLevelColor = {
-  ["emergency" /* EMERGENCY */]: "#FF0000",
-  // Red
-  ["alert" /* ALERT */]: "#FF4500",
-  // OrangeRed
-  ["critical" /* CRITICAL */]: "#FF8C00",
-  // DarkOrange
-  ["error" /* ERROR */]: "#FFA500",
-  // Orange
-  ["warning" /* WARNING */]: "#FFD700",
-  // Gold
-  ["notice" /* NOTICE */]: "#1E90FF",
-  // DodgerBlue
-  ["info" /* INFO */]: "#32CD32",
-  // LimeGreen
-  ["debug" /* DEBUG */]: "#808080"
-  // Gray
-};
 
 // src/utils/date.ts
 function getDateFormatString(format, customFormat) {
@@ -162,6 +134,9 @@ function getDateFormatString(format, customFormat) {
       return "MM/DD/YYYY";
     case "HH:mm:ss" /* HH_MM_SS */:
       return "HH:mm:ss";
+    case "YYYY-MM-DD HH:mm:ss.SSS" /* YYYY_MM_DD_HH_MM_SS_MILLI */:
+      return "YYYY-MM-DD HH:mm:ss.SSS";
+    // Handle milliseconds format here
     case "custom" /* CUSTOM */:
       return customFormat || "YYYY-MM-DD HH:mm:ss";
     default:
@@ -170,18 +145,50 @@ function getDateFormatString(format, customFormat) {
 }
 function formatDate(date, format, customFormat) {
   const formatString = getDateFormatString(format, customFormat);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
-  const milliseconds = String(date.getMilliseconds()).padStart(3, "0");
+  const year = date.getUTCFullYear();
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+  const seconds = String(date.getUTCSeconds()).padStart(2, "0");
+  const milliseconds = String(date.getUTCMilliseconds()).padStart(3, "0");
   if (format === "UNIX" /* UNIX */) {
     return Math.floor(date.getTime() / 1e3).toString();
   }
   return formatString.replace("YYYY", String(year)).replace("MM", month).replace("DD", day).replace("HH", hours).replace("mm", minutes).replace("ss", seconds).replace("SSS", milliseconds);
 }
+
+// src/constants/log-level-color.constant.ts
+var LogLevelColor = {
+  ["emergency" /* EMERGENCY */]: "#FF0000",
+  // Red
+  ["alert" /* ALERT */]: "#FF4500",
+  // OrangeRed
+  ["critical" /* CRITICAL */]: "#FF8C00",
+  // DarkOrange
+  ["error" /* ERROR */]: "#FFA500",
+  // Orange
+  ["warning" /* WARNING */]: "#FFD700",
+  // Gold
+  ["notice" /* NOTICE */]: "#1E90FF",
+  // DodgerBlue
+  ["info" /* INFO */]: "#32CD32",
+  // LimeGreen
+  ["debug" /* DEBUG */]: "#808080"
+  // Gray
+};
+
+// src/constants/log-level-emoji.constant.ts
+var LogLevelEmoji = {
+  ["emergency" /* EMERGENCY */]: "\u{1F6A8}",
+  ["alert" /* ALERT */]: "\u{1F514}",
+  ["critical" /* CRITICAL */]: "\u2757",
+  ["error" /* ERROR */]: "\u{1F534}",
+  ["warning" /* WARNING */]: "\u26A0\uFE0F",
+  ["notice" /* NOTICE */]: "\u{1F4DD}",
+  ["info" /* INFO */]: "\u2705",
+  ["debug" /* DEBUG */]: "\u{1F6E0}\uFE0F"
+};
 
 // src/formatters/line-formatter.ts
 var LineFormatter = class {

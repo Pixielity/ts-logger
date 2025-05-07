@@ -1,9 +1,9 @@
 import { LogLevel } from '../enums/log-level.enum.mjs';
-import { LogChannelType } from '../enums/log-channel-type.enum.mjs';
+import { DateFormat } from '../enums/date-format.enum.mjs';
 import { HandlerType } from '../enums/handler-type.enum.mjs';
 import { FormatterType } from '../enums/formatter-type.enum.mjs';
 import { ProcessorType } from '../enums/processor-type.enum.mjs';
-import { DateFormat } from '../enums/date-format.enum.mjs';
+import { LogChannelType } from '../enums/log-channel-type.enum.mjs';
 
 /**
  * Configuration for the ts-log package.

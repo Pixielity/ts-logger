@@ -1,6 +1,6 @@
 import { IContextManager } from '../interfaces/context/manager.interface.mjs';
 import { IContextManagement } from '../interfaces/context/management.interface.mjs';
-import { LogContext } from '../types/types.mjs';
+import { LogContext } from '../types/log-context.type.mjs';
 
 /**
  * ContextManager is an implementation of the IContextManager interface.

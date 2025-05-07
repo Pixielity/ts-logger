@@ -1,7 +1,8 @@
 import { injectable } from 'inversify'
-import type { IJsonFormatter } from '../interfaces/formatters/json-formatter.interface'
-import type { LogRecord } from '../types/types'
+
+import type { LogRecord } from '../types/log-record.type'
 import { FormatterType } from '../enums/formatter-type.enum'
+import type { IJsonFormatter } from '../interfaces/formatters/json-formatter.interface'
 
 /**
  * JsonFormatter is an implementation of the IJsonFormatter interface.

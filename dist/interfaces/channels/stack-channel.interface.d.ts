@@ -1,6 +1,7 @@
 import { ILoggingChannel } from './logging-channel.interface.js';
 import '../../enums/log-level.enum.js';
-import '../../types/types.js';
+import '../../types/log-record.type.js';
+import '../../types/log-context.type.js';
 
 /**
  * IStackChannel defines the contract for stack channels.

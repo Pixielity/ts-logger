@@ -1,6 +1,6 @@
-import type { IMessageLogged } from '../interfaces/events/message-logged.interface'
 import type { LogLevel } from '../enums/log-level.enum'
-import type { LogContext } from '../types/types'
+import type { LogContext } from '../types/log-context.type'
+import type { IMessageLogged } from '../interfaces/events/message-logged.interface'
 
 /**
  * MessageLoggedEvent is an implementation of the IMessageLogged interface.

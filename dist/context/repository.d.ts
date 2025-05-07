@@ -1,7 +1,8 @@
 import { IContextManagement } from '../interfaces/context/management.interface.js';
 import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface.js';
-import { LogContext } from '../types/types.js';
+import { LogContext } from '../types/log-context.type.js';
 import '../interfaces/events/log-event.interface.js';
+import '../types/log-listener.type.js';
 
 /**
  * ContextRepository is an implementation of the IContextManagement interface.

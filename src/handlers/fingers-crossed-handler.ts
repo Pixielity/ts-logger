@@ -1,9 +1,10 @@
 import { injectable } from 'inversify'
-import type { IFingersCrossedHandler } from '../interfaces/handlers/fingers-crossed-handler.interface'
-import type { ILogHandler } from '../interfaces/handlers/log-handler.interface'
-import type { LogLevel } from '../enums/log-level.enum'
-import type { LogRecord } from '../types/types'
+
 import { LogLevelValue } from '../constants'
+import type { LogLevel } from '../enums/log-level.enum'
+import type { LogRecord } from '../types/log-record.type'
+import type { ILogHandler } from '../interfaces/handlers/log-handler.interface'
+import type { IFingersCrossedHandler } from '../interfaces/handlers/fingers-crossed-handler.interface'
 
 /**
  * FingersCrossedHandler is an implementation of the IFingersCrossedHandler interface.

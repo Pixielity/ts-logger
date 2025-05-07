@@ -1,5 +1,5 @@
 import type { LogLevel } from '../../enums/log-level.enum'
-import type { LogContext, LogRecord } from '../../types/types'
+import type { LogContext, LogRecord } from '../../types'
 
 /**
  * ILoggingChannel defines the contract for logging channels.

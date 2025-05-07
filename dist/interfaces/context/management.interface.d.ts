@@ -1,4 +1,4 @@
-import { LogContext } from '../../types/types.js';
+import { LogContext } from '../../types/log-context.type.js';
 
 /**
  * IContextManagement defines the contract for context management.

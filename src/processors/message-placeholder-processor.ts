@@ -1,7 +1,8 @@
 import { injectable } from 'inversify'
-import type { IMessagePlaceholderProcessor } from '../interfaces/processors/message-placeholder-processor.interface'
-import type { LogRecord } from '../types/types'
+
+import type { LogRecord } from '../types/log-record.type'
 import { ProcessorType } from '../enums/processor-type.enum'
+import type { IMessagePlaceholderProcessor } from '../interfaces/processors/message-placeholder-processor.interface'
 
 /**
  * MessagePlaceholderProcessor is an implementation of the IMessagePlaceholderProcessor interface.
@@ -42,37 +43,62 @@ export class MessagePlaceholderProcessor implements IMessagePlaceholderProcessor
   }
 
   /**
-   * Replace placeholders in a message with context values
-   * @param message The message to process
-   * @param context The context values
+   * Replace placeholders in a message with corresponding context values.
+   * The placeholder format is dynamically determined (e.g., '{key}', '%key%', '{{var}}', etc.).
+   *
+   * @param message - The input message string that may contain placeholders.
+   * @param context - A dictionary of keys and values used to replace placeholders.
+   * @returns The message with placeholders replaced by context values.
    */
   private replacePlaceholders(message: string, context: Record<string, any>): string {
+    // If the message is empty or there is no context to apply, return the message as is
     if (!message || !context || Object.keys(context).length === 0) {
       return message
     }
 
-    let result = message
+    // Retrieve the placeholder format pattern (e.g., '{key}', '{{var}}', '%key%')
+    const pattern = this.getPlaceholderPattern()
 
-    // Get the placeholder pattern
-    const placeholderPattern = this.getPlaceholderPattern()
+    /**
+     * Match and extract the parts of the pattern:
+     * - group 1: prefix (before 'key' or 'var')
+     * - group 2: the token placeholder ('key' or 'var')
+     * - group 3: suffix (after 'key' or 'var')
+     */
+    const match = pattern.match(/^(.*)(key|var)(.*)$/)
 
-    // Replace all placeholders
-    for (const [key, value] of Object.entries(context)) {
-      const placeholder = placeholderPattern.replace('key', key)
-      const regex = new RegExp(this.escapeRegExp(placeholder), 'g')
+    // If pattern does not include 'key' or 'var', we can't process it
+    if (!match) return message
 
-      // Convert the value to a string
-      let stringValue = this.convertToString(value)
+    // Destructure the match groups: prefix and suffix around the token name
+    const [, prefix, , suffix] = match
 
-      // Add emoji if enabled and the value is a string with an emoji
+    /**
+     * Build a dynamic RegExp using the detected prefix and suffix
+     * Example: if prefix='{', suffix='}', it becomes /\{(\w+)\}/g
+     * The (\w+) group captures the placeholder token (e.g., "user" in "{user}")
+     */
+    const regex = new RegExp(this.escapeRegExp(prefix) + '(\\w+)' + this.escapeRegExp(suffix), 'g')
+
+    // Replace each matched placeholder in the message
+    return message.replace(regex, (_fullMatch, token) => {
+      // Look up the token in the context
+      const value = context[token]
+
+      // If the token isn't found or is null/undefined, replace with an empty string
+      if (value === undefined || value === null) return ''
+
+      // If value is an object (e.g., array, plain object), convert it to a JSON string
+      if (typeof value === 'object') return this.convertToString(value)
+
+      // If emoji support is enabled and value is a string emoji, use it as-is
       if (this.emojiSupport && typeof value === 'string' && this.isEmoji(value)) {
-        stringValue = value
+        return value
       }
 
-      result = result.replace(regex, stringValue)
-    }
-
-    return result
+      // Otherwise, return the value converted to a string
+      return String(value)
+    })
   }
 
   /**

@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
 import type { IContextManagement } from '../interfaces/context/management.interface'
 import type { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface'
-import type { LogContext } from '../types/types'
+import type { LogContext } from '../types/log-context.type'
 import { ContextDehydratingEvent } from './events/dehydrating.event'
 import { ContextHydratedEvent } from './events/hydrated.event'
 

@@ -3,7 +3,8 @@ import { ILogHandler } from '../handlers/log-handler.interface.mjs';
 import { ILogFormatter } from '../formatters/log-formatter.interface.mjs';
 import { ILogProcessor } from '../processors/log-processor.interface.mjs';
 import '../../enums/log-level.enum.mjs';
-import '../../types/types.mjs';
+import '../../types/log-record.type.mjs';
+import '../../types/log-context.type.mjs';
 
 /**
  * ISingleChannel defines the contract for single channels.

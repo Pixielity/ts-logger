@@ -1,5 +1,6 @@
+import { LogRecord } from '../types/log-record.type.mjs';
 import { IJsonFormatter } from '../interfaces/formatters/json-formatter.interface.mjs';
-import { LogRecord } from '../types/types.mjs';
+import '../types/log-context.type.mjs';
 import '../interfaces/formatters/log-formatter.interface.mjs';
 
 /**

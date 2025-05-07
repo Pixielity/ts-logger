@@ -1,4 +1,5 @@
-import { LogRecord } from '../../types/types.mjs';
+import { LogRecord } from '../../types/log-record.type.mjs';
+import '../../types/log-context.type.mjs';
 
 /**
  * ILogFormatter defines the contract for log formatters.

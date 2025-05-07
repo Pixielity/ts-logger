@@ -1,8 +1,9 @@
-import { ISlackWebhookHandler } from '../interfaces/handlers/slack-webhook-handler.interface.mjs';
 import { HttpHandler } from './http-handler.mjs';
-import { LogRecord } from '../types/types.mjs';
+import { LogRecord } from '../types/log-record.type.mjs';
+import { ISlackWebhookHandler } from '../interfaces/handlers/slack-webhook-handler.interface.mjs';
 import '../interfaces/handlers/http-handler.interface.mjs';
 import '../interfaces/handlers/log-handler.interface.mjs';
+import '../types/log-context.type.mjs';
 
 /**
  * SlackWebhookHandler is an implementation of the ISlackWebhookHandler interface.

@@ -1,5 +1,5 @@
 import type { ILogProcessor } from './log-processor.interface'
-import type { LogContext } from '../../types/types'
+import type { LogContext } from '../../types/log-context.type'
 
 /**
  * IContextLogProcessor defines the contract for context log processors.

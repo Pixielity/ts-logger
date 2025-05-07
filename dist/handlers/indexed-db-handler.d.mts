@@ -1,5 +1,6 @@
+import { LogRecord } from '../types/log-record.type.mjs';
 import { IIndexedDBHandler } from '../interfaces/handlers/indexed-db-handler.interface.mjs';
-import { LogRecord } from '../types/types.mjs';
+import '../types/log-context.type.mjs';
 import '../interfaces/handlers/log-handler.interface.mjs';
 
 /**

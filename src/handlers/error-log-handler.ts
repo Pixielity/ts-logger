@@ -1,7 +1,8 @@
 import { injectable } from 'inversify'
-import type { IErrorLogHandler } from '../interfaces/handlers/error-log-handler.interface'
-import type { LogRecord } from '../types/types'
+
 import { LogLevelEmoji } from '../constants'
+import type { LogRecord } from '../types/log-record.type'
+import type { IErrorLogHandler } from '../interfaces/handlers/error-log-handler.interface'
 
 /**
  * ErrorLogHandler is an implementation of the IErrorLogHandler interface.

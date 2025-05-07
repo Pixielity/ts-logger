@@ -134,6 +134,7 @@ exports.Logger = class Logger {
    */
   constructor(injectableChannel, eventDispatcher) {
     this._context = {};
+    console.log("=======>>>>>>>>>", injectableChannel);
     this._channel = injectableChannel;
     this._eventDispatcher = eventDispatcher;
   }
@@ -274,19 +275,21 @@ exports.Logger = __decorateClass([
   __decorateParam(1, inversify.inject(exports.IEventDispatcher.$))
 ], exports.Logger);
 
-// src/enums/log-channel-type.enum.ts
-var LogChannelType = /* @__PURE__ */ ((LogChannelType2) => {
-  LogChannelType2["CONSOLE"] = "console";
-  LogChannelType2["LOCAL_STORAGE"] = "localStorage";
-  LogChannelType2["INDEXED_DB"] = "indexedDB";
-  LogChannelType2["HTTP"] = "http";
-  LogChannelType2["SLACK"] = "slack";
-  LogChannelType2["ERROR_LOG"] = "errorLog";
-  LogChannelType2["SYSLOG"] = "syslog";
-  LogChannelType2["STACK"] = "stack";
-  LogChannelType2["CUSTOM"] = "custom";
-  return LogChannelType2;
-})(LogChannelType || {});
+// src/enums/date-format.enum.ts
+var DateFormat = /* @__PURE__ */ ((DateFormat2) => {
+  DateFormat2["ISO8601"] = "ISO8601";
+  DateFormat2["RFC3339"] = "RFC3339";
+  DateFormat2["RFC2822"] = "RFC2822";
+  DateFormat2["UNIX"] = "UNIX";
+  DateFormat2["YYYY_MM_DD"] = "YYYY-MM-DD";
+  DateFormat2["YYYY_MM_DD_HH_MM_SS"] = "YYYY-MM-DD HH:mm:ss";
+  DateFormat2["DD_MM_YYYY"] = "DD/MM/YYYY";
+  DateFormat2["MM_DD_YYYY"] = "MM/DD/YYYY";
+  DateFormat2["HH_MM_SS"] = "HH:mm:ss";
+  DateFormat2["CUSTOM"] = "custom";
+  DateFormat2["YYYY_MM_DD_HH_MM_SS_MILLI"] = "YYYY-MM-DD HH:mm:ss.SSS";
+  return DateFormat2;
+})(DateFormat || {});
 
 // src/enums/handler-type.enum.ts
 var HandlerType = /* @__PURE__ */ ((HandlerType2) => {
@@ -319,20 +322,19 @@ var ProcessorType = /* @__PURE__ */ ((ProcessorType2) => {
   return ProcessorType2;
 })(ProcessorType || {});
 
-// src/enums/date-format.enum.ts
-var DateFormat = /* @__PURE__ */ ((DateFormat2) => {
-  DateFormat2["ISO8601"] = "ISO8601";
-  DateFormat2["RFC3339"] = "RFC3339";
-  DateFormat2["RFC2822"] = "RFC2822";
-  DateFormat2["UNIX"] = "UNIX";
-  DateFormat2["YYYY_MM_DD"] = "YYYY-MM-DD";
-  DateFormat2["YYYY_MM_DD_HH_MM_SS"] = "YYYY-MM-DD HH:mm:ss";
-  DateFormat2["DD_MM_YYYY"] = "DD/MM/YYYY";
-  DateFormat2["MM_DD_YYYY"] = "MM/DD/YYYY";
-  DateFormat2["HH_MM_SS"] = "HH:mm:ss";
-  DateFormat2["CUSTOM"] = "custom";
-  return DateFormat2;
-})(DateFormat || {});
+// src/enums/log-channel-type.enum.ts
+var LogChannelType = /* @__PURE__ */ ((LogChannelType2) => {
+  LogChannelType2["CONSOLE"] = "console";
+  LogChannelType2["LOCAL_STORAGE"] = "localStorage";
+  LogChannelType2["INDEXED_DB"] = "indexedDB";
+  LogChannelType2["HTTP"] = "http";
+  LogChannelType2["SLACK"] = "slack";
+  LogChannelType2["ERROR_LOG"] = "errorLog";
+  LogChannelType2["SYSLOG"] = "syslog";
+  LogChannelType2["STACK"] = "stack";
+  LogChannelType2["CUSTOM"] = "custom";
+  return LogChannelType2;
+})(LogChannelType || {});
 
 // src/config/logging-config.ts
 var loggingConfig = {
@@ -678,25 +680,25 @@ exports.LogManager = class LogManager {
    * @param name The channel name
    */
   channel(name) {
-    const channelName = name || this._defaultChannel;
-    if (!this._channels[channelName]) {
-      throw new Error(`Channel [${channelName}] not found.`);
-    }
-    return this._channels[channelName];
+    return this.driver(name);
   }
   /**
    * Get the stack channel with the specified name
    * @param name The stack name
    */
   stack(name) {
-    return this.channel(name);
+    return this.driver(name);
   }
   /**
    * Get the driver with the specified name
    * @param name The driver name
    */
   driver(name) {
-    return this.channel(name);
+    const channelName = name || this._defaultChannel;
+    if (!this._channels[channelName]) {
+      throw new Error(`Channel [${channelName}] not found.`);
+    }
+    return this._channels[channelName];
   }
   /**
    * Extend the logging system with a custom driver creator
@@ -785,35 +787,17 @@ exports.LogManager = __decorateClass([
   inversify.injectable()
 ], exports.LogManager);
 
-// src/interfaces/channels/logging-channel.interface.ts
-exports.ILoggingChannel = void 0;
-((ILoggingChannel2) => {
-  ILoggingChannel2.$ = Symbol.for("ILoggingChannel");
-})(exports.ILoggingChannel || (exports.ILoggingChannel = {}));
-
-// src/interfaces/channels/single-channel.interface.ts
-exports.ISingleChannel = void 0;
-((ISingleChannel2) => {
-  ISingleChannel2.$ = Symbol.for("ISingleChannel");
-})(exports.ISingleChannel || (exports.ISingleChannel = {}));
-
-// src/interfaces/channels/stack-channel.interface.ts
-exports.IStackChannel = void 0;
-((IStackChannel2) => {
-  IStackChannel2.$ = Symbol.for("IStackChannel");
-})(exports.IStackChannel || (exports.IStackChannel = {}));
-
 // src/interfaces/context/manager.interface.ts
 exports.IContextManager = void 0;
 ((IContextManager2) => {
   IContextManager2.$ = Symbol.for("IContextManager");
 })(exports.IContextManager || (exports.IContextManager = {}));
 
-// src/interfaces/context/management.interface.ts
-exports.IContextManagement = void 0;
-((IContextManagement2) => {
-  IContextManagement2.$ = Symbol.for("IContextManagement");
-})(exports.IContextManagement || (exports.IContextManagement = {}));
+// src/interfaces/utils/exception-formatter.interface.ts
+exports.IExceptionFormatter = void 0;
+((IExceptionFormatter2) => {
+  IExceptionFormatter2.$ = Symbol.for("IExceptionFormatter");
+})(exports.IExceptionFormatter || (exports.IExceptionFormatter = {}));
 
 // src/interfaces/events/dehydrating.interface.ts
 exports.IContextDehydrating = void 0;
@@ -839,29 +823,41 @@ exports.IMessageLogged = void 0;
   IMessageLogged2.$ = Symbol.for("IMessageLogged");
 })(exports.IMessageLogged || (exports.IMessageLogged = {}));
 
-// src/interfaces/formatters/json-formatter.interface.ts
-exports.IJsonFormatter = void 0;
-((IJsonFormatter2) => {
-  IJsonFormatter2.$ = Symbol.for("IJsonFormatter");
-})(exports.IJsonFormatter || (exports.IJsonFormatter = {}));
+// src/interfaces/logging/manager.interface.ts
+exports.ILogManager = void 0;
+((ILogManager2) => {
+  ILogManager2.$ = Symbol.for("ILogManager");
+})(exports.ILogManager || (exports.ILogManager = {}));
 
-// src/interfaces/formatters/line-formatter.interface.ts
-exports.ILineFormatter = void 0;
-((ILineFormatter2) => {
-  ILineFormatter2.$ = Symbol.for("ILineFormatter");
-})(exports.ILineFormatter || (exports.ILineFormatter = {}));
+// src/interfaces/logging/logging-service.interface.ts
+exports.ILoggingService = void 0;
+((ILoggingService2) => {
+  ILoggingService2.$ = Symbol.for("ILoggingService");
+})(exports.ILoggingService || (exports.ILoggingService = {}));
 
-// src/interfaces/formatters/log-formatter.interface.ts
-exports.ILogFormatter = void 0;
-((ILogFormatter2) => {
-  ILogFormatter2.$ = Symbol.for("ILogFormatter");
-})(exports.ILogFormatter || (exports.ILogFormatter = {}));
+// src/interfaces/context/management.interface.ts
+exports.IContextManagement = void 0;
+((IContextManagement2) => {
+  IContextManagement2.$ = Symbol.for("IContextManagement");
+})(exports.IContextManagement || (exports.IContextManagement = {}));
 
-// src/interfaces/formatters/simple-formatter.interface.ts
-exports.ISimpleFormatter = void 0;
-((ISimpleFormatter2) => {
-  ISimpleFormatter2.$ = Symbol.for("ISimpleFormatter");
-})(exports.ISimpleFormatter || (exports.ISimpleFormatter = {}));
+// src/interfaces/channels/logging-channel.interface.ts
+exports.ILoggingChannel = void 0;
+((ILoggingChannel2) => {
+  ILoggingChannel2.$ = Symbol.for("ILoggingChannel");
+})(exports.ILoggingChannel || (exports.ILoggingChannel = {}));
+
+// src/interfaces/channels/single-channel.interface.ts
+exports.ISingleChannel = void 0;
+((ISingleChannel2) => {
+  ISingleChannel2.$ = Symbol.for("ISingleChannel");
+})(exports.ISingleChannel || (exports.ISingleChannel = {}));
+
+// src/interfaces/channels/stack-channel.interface.ts
+exports.IStackChannel = void 0;
+((IStackChannel2) => {
+  IStackChannel2.$ = Symbol.for("IStackChannel");
+})(exports.IStackChannel || (exports.IStackChannel = {}));
 
 // src/interfaces/handlers/console-handler.interface.ts
 exports.IConsoleHandler = void 0;
@@ -917,17 +913,29 @@ exports.ISyslogHandler = void 0;
   ISyslogHandler2.$ = Symbol.for("ISyslogHandler");
 })(exports.ISyslogHandler || (exports.ISyslogHandler = {}));
 
-// src/interfaces/logging/manager.interface.ts
-exports.ILogManager = void 0;
-((ILogManager2) => {
-  ILogManager2.$ = Symbol.for("ILogManager");
-})(exports.ILogManager || (exports.ILogManager = {}));
+// src/interfaces/formatters/json-formatter.interface.ts
+exports.IJsonFormatter = void 0;
+((IJsonFormatter2) => {
+  IJsonFormatter2.$ = Symbol.for("IJsonFormatter");
+})(exports.IJsonFormatter || (exports.IJsonFormatter = {}));
 
-// src/interfaces/logging/logging-service.interface.ts
-exports.ILoggingService = void 0;
-((ILoggingService2) => {
-  ILoggingService2.$ = Symbol.for("ILoggingService");
-})(exports.ILoggingService || (exports.ILoggingService = {}));
+// src/interfaces/formatters/line-formatter.interface.ts
+exports.ILineFormatter = void 0;
+((ILineFormatter2) => {
+  ILineFormatter2.$ = Symbol.for("ILineFormatter");
+})(exports.ILineFormatter || (exports.ILineFormatter = {}));
+
+// src/interfaces/formatters/log-formatter.interface.ts
+exports.ILogFormatter = void 0;
+((ILogFormatter2) => {
+  ILogFormatter2.$ = Symbol.for("ILogFormatter");
+})(exports.ILogFormatter || (exports.ILogFormatter = {}));
+
+// src/interfaces/formatters/simple-formatter.interface.ts
+exports.ISimpleFormatter = void 0;
+((ISimpleFormatter2) => {
+  ISimpleFormatter2.$ = Symbol.for("ISimpleFormatter");
+})(exports.ISimpleFormatter || (exports.ISimpleFormatter = {}));
 
 // src/interfaces/processors/context-log-processor.interface.ts
 exports.IContextLogProcessor = void 0;
@@ -946,12 +954,6 @@ exports.IMessagePlaceholderProcessor = void 0;
 ((IMessagePlaceholderProcessor2) => {
   IMessagePlaceholderProcessor2.$ = Symbol.for("IMessagePlaceholderProcessor");
 })(exports.IMessagePlaceholderProcessor || (exports.IMessagePlaceholderProcessor = {}));
-
-// src/interfaces/utils/exception-formatter.interface.ts
-exports.IExceptionFormatter = void 0;
-((IExceptionFormatter2) => {
-  IExceptionFormatter2.$ = Symbol.for("IExceptionFormatter");
-})(exports.IExceptionFormatter || (exports.IExceptionFormatter = {}));
 exports.SingleChannel = class SingleChannel {
   /**
    * Create a new SingleChannel instance
@@ -1719,46 +1721,6 @@ exports.JsonFormatter = __decorateClass([
   inversify.injectable()
 ], exports.JsonFormatter);
 
-// src/constants/constants.ts
-var LogLevelValue = {
-  ["emergency" /* EMERGENCY */]: 800,
-  ["alert" /* ALERT */]: 700,
-  ["critical" /* CRITICAL */]: 600,
-  ["error" /* ERROR */]: 500,
-  ["warning" /* WARNING */]: 400,
-  ["notice" /* NOTICE */]: 300,
-  ["info" /* INFO */]: 200,
-  ["debug" /* DEBUG */]: 100
-};
-var LogLevelEmoji = {
-  ["emergency" /* EMERGENCY */]: "\u{1F6A8}",
-  ["alert" /* ALERT */]: "\u{1F514}",
-  ["critical" /* CRITICAL */]: "\u2757",
-  ["error" /* ERROR */]: "\u{1F534}",
-  ["warning" /* WARNING */]: "\u26A0\uFE0F",
-  ["notice" /* NOTICE */]: "\u{1F4DD}",
-  ["info" /* INFO */]: "\u2705",
-  ["debug" /* DEBUG */]: "\u{1F6E0}\uFE0F"
-};
-var LogLevelColor = {
-  ["emergency" /* EMERGENCY */]: "#FF0000",
-  // Red
-  ["alert" /* ALERT */]: "#FF4500",
-  // OrangeRed
-  ["critical" /* CRITICAL */]: "#FF8C00",
-  // DarkOrange
-  ["error" /* ERROR */]: "#FFA500",
-  // Orange
-  ["warning" /* WARNING */]: "#FFD700",
-  // Gold
-  ["notice" /* NOTICE */]: "#1E90FF",
-  // DodgerBlue
-  ["info" /* INFO */]: "#32CD32",
-  // LimeGreen
-  ["debug" /* DEBUG */]: "#808080"
-  // Gray
-};
-
 // src/utils/date.ts
 function getDateFormatString(format, customFormat) {
   switch (format) {
@@ -1780,6 +1742,9 @@ function getDateFormatString(format, customFormat) {
       return "MM/DD/YYYY";
     case "HH:mm:ss" /* HH_MM_SS */:
       return "HH:mm:ss";
+    case "YYYY-MM-DD HH:mm:ss.SSS" /* YYYY_MM_DD_HH_MM_SS_MILLI */:
+      return "YYYY-MM-DD HH:mm:ss.SSS";
+    // Handle milliseconds format here
     case "custom" /* CUSTOM */:
       return customFormat || "YYYY-MM-DD HH:mm:ss";
     default:
@@ -1788,18 +1753,62 @@ function getDateFormatString(format, customFormat) {
 }
 function formatDate(date, format, customFormat) {
   const formatString = getDateFormatString(format, customFormat);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
-  const milliseconds = String(date.getMilliseconds()).padStart(3, "0");
+  const year = date.getUTCFullYear();
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+  const seconds = String(date.getUTCSeconds()).padStart(2, "0");
+  const milliseconds = String(date.getUTCMilliseconds()).padStart(3, "0");
   if (format === "UNIX" /* UNIX */) {
     return Math.floor(date.getTime() / 1e3).toString();
   }
   return formatString.replace("YYYY", String(year)).replace("MM", month).replace("DD", day).replace("HH", hours).replace("mm", minutes).replace("ss", seconds).replace("SSS", milliseconds);
 }
+
+// src/constants/log-level-color.constant.ts
+var LogLevelColor = {
+  ["emergency" /* EMERGENCY */]: "#FF0000",
+  // Red
+  ["alert" /* ALERT */]: "#FF4500",
+  // OrangeRed
+  ["critical" /* CRITICAL */]: "#FF8C00",
+  // DarkOrange
+  ["error" /* ERROR */]: "#FFA500",
+  // Orange
+  ["warning" /* WARNING */]: "#FFD700",
+  // Gold
+  ["notice" /* NOTICE */]: "#1E90FF",
+  // DodgerBlue
+  ["info" /* INFO */]: "#32CD32",
+  // LimeGreen
+  ["debug" /* DEBUG */]: "#808080"
+  // Gray
+};
+
+// src/constants/log-level-emoji.constant.ts
+var LogLevelEmoji = {
+  ["emergency" /* EMERGENCY */]: "\u{1F6A8}",
+  ["alert" /* ALERT */]: "\u{1F514}",
+  ["critical" /* CRITICAL */]: "\u2757",
+  ["error" /* ERROR */]: "\u{1F534}",
+  ["warning" /* WARNING */]: "\u26A0\uFE0F",
+  ["notice" /* NOTICE */]: "\u{1F4DD}",
+  ["info" /* INFO */]: "\u2705",
+  ["debug" /* DEBUG */]: "\u{1F6E0}\uFE0F"
+};
+
+// src/constants/log-level-value.constant.ts
+var LogLevelValue = {
+  ["emergency" /* EMERGENCY */]: 800,
+  ["alert" /* ALERT */]: 700,
+  ["critical" /* CRITICAL */]: 600,
+  ["error" /* ERROR */]: 500,
+  ["warning" /* WARNING */]: 400,
+  ["notice" /* NOTICE */]: 300,
+  ["info" /* INFO */]: 200,
+  ["debug" /* DEBUG */]: 100
+};
 
 // src/formatters/line-formatter.ts
 exports.LineFormatter = class LineFormatter {
@@ -3214,26 +3223,31 @@ exports.MessagePlaceholderProcessor = class MessagePlaceholderProcessor {
     };
   }
   /**
-   * Replace placeholders in a message with context values
-   * @param message The message to process
-   * @param context The context values
+   * Replace placeholders in a message with corresponding context values.
+   * The placeholder format is dynamically determined (e.g., '{key}', '%key%', '{{var}}', etc.).
+   *
+   * @param message - The input message string that may contain placeholders.
+   * @param context - A dictionary of keys and values used to replace placeholders.
+   * @returns The message with placeholders replaced by context values.
    */
   replacePlaceholders(message, context) {
     if (!message || !context || Object.keys(context).length === 0) {
       return message;
     }
-    let result = message;
-    const placeholderPattern = this.getPlaceholderPattern();
-    for (const [key, value] of Object.entries(context)) {
-      const placeholder = placeholderPattern.replace("key", key);
-      const regex = new RegExp(this.escapeRegExp(placeholder), "g");
-      let stringValue = this.convertToString(value);
+    const pattern = this.getPlaceholderPattern();
+    const match = pattern.match(/^(.*)(key|var)(.*)$/);
+    if (!match) return message;
+    const [, prefix, , suffix] = match;
+    const regex = new RegExp(this.escapeRegExp(prefix) + "(\\w+)" + this.escapeRegExp(suffix), "g");
+    return message.replace(regex, (_fullMatch, token) => {
+      const value = context[token];
+      if (value === void 0 || value === null) return "";
+      if (typeof value === "object") return this.convertToString(value);
       if (this.emojiSupport && typeof value === "string" && this.isEmoji(value)) {
-        stringValue = value;
+        return value;
       }
-      result = result.replace(regex, stringValue);
-    }
-    return result;
+      return String(value);
+    });
   }
   /**
    * Get the placeholder pattern

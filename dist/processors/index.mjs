@@ -106,26 +106,31 @@ var MessagePlaceholderProcessor = class {
     };
   }
   /**
-   * Replace placeholders in a message with context values
-   * @param message The message to process
-   * @param context The context values
+   * Replace placeholders in a message with corresponding context values.
+   * The placeholder format is dynamically determined (e.g., '{key}', '%key%', '{{var}}', etc.).
+   *
+   * @param message - The input message string that may contain placeholders.
+   * @param context - A dictionary of keys and values used to replace placeholders.
+   * @returns The message with placeholders replaced by context values.
    */
   replacePlaceholders(message, context) {
     if (!message || !context || Object.keys(context).length === 0) {
       return message;
     }
-    let result = message;
-    const placeholderPattern = this.getPlaceholderPattern();
-    for (const [key, value] of Object.entries(context)) {
-      const placeholder = placeholderPattern.replace("key", key);
-      const regex = new RegExp(this.escapeRegExp(placeholder), "g");
-      let stringValue = this.convertToString(value);
+    const pattern = this.getPlaceholderPattern();
+    const match = pattern.match(/^(.*)(key|var)(.*)$/);
+    if (!match) return message;
+    const [, prefix, , suffix] = match;
+    const regex = new RegExp(this.escapeRegExp(prefix) + "(\\w+)" + this.escapeRegExp(suffix), "g");
+    return message.replace(regex, (_fullMatch, token) => {
+      const value = context[token];
+      if (value === void 0 || value === null) return "";
+      if (typeof value === "object") return this.convertToString(value);
       if (this.emojiSupport && typeof value === "string" && this.isEmoji(value)) {
-        stringValue = value;
+        return value;
       }
-      result = result.replace(regex, stringValue);
-    }
-    return result;
+      return String(value);
+    });
   }
   /**
    * Get the placeholder pattern

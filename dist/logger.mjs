@@ -109,6 +109,7 @@ var Logger = class {
    */
   constructor(injectableChannel, eventDispatcher) {
     this._context = {};
+    console.log("=======>>>>>>>>>", injectableChannel);
     this._channel = injectableChannel;
     this._eventDispatcher = eventDispatcher;
   }

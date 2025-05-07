@@ -1,5 +1,5 @@
 import { LogLevel } from '../../enums/log-level.enum.js';
-import { LogContext } from '../../types/types.js';
+import { LogContext } from '../../types/log-context.type.js';
 
 /**
  * ILoggingService defines the contract for logging services.

@@ -1,6 +1,7 @@
 import { injectable } from 'inversify'
-import type { IExceptionFormatter } from '../interfaces/utils/exception-formatter.interface'
 import StackTrace from 'stacktrace-js'
+
+import type { IExceptionFormatter } from '../interfaces/utils/exception-formatter.interface'
 
 /**
  * ExceptionFormatter is an implementation of the IExceptionFormatter interface.

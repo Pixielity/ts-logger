@@ -11,20 +11,18 @@ describe('LocalStorageHandler', () => {
   }
 
   beforeEach(() => {
-    // Mock localStorage
     mockLocalStorage = {
       getItem: jest.fn().mockReturnValue(JSON.stringify([])),
       setItem: jest.fn(),
       removeItem: jest.fn(),
     }
 
-    // Set up global localStorage mock
-    Object.defineProperty(window, 'localStorage', {
+    // Attach mock localStorage to globalThis (universal context)
+    Object.defineProperty(globalThis, 'localStorage', {
       value: mockLocalStorage,
       writable: true,
     })
 
-    // Create local storage handler instance
     localStorageHandler = new LocalStorageHandler({
       key: 'test-logs',
       maxEntries: 5,

@@ -1,7 +1,7 @@
 import { injectable, inject } from 'inversify'
 import type { IContextManager } from '../interfaces/context/manager.interface'
 import { IContextManagement } from '../interfaces/context/management.interface'
-import type { LogContext } from '../types/types'
+import type { LogContext } from '../types/log-context.type'
 
 /**
  * ContextManager is an implementation of the IContextManager interface.

@@ -17,6 +17,8 @@ var __decorateClass = (decorators, target, key, kind) => {
       result = (decorator(result)) || result;
   return result;
 };
+
+// src/constants/log-level-emoji.constant.ts
 var LogLevelEmoji = {
   ["emergency" /* EMERGENCY */]: "\u{1F6A8}",
   ["alert" /* ALERT */]: "\u{1F514}",

@@ -1,13 +1,19 @@
+import { LogContext } from './types/log-context.type.js';
+import { HandlerOptions } from './types/handler-options.type.js';
+import { ChannelOptions } from './types/channel-options.type.js';
+import { FormatterOptions } from './types/formatter-options.type.js';
+import { ProcessorOptions } from './types/processor-options.type.js';
 import { LogLevel } from './enums/log-level.enum.js';
 import { LogChannelType } from './enums/log-channel-type.enum.js';
 import { ILogManager } from './interfaces/logging/manager.interface.js';
-import { ILoggingService } from './interfaces/logging/logging-service.interface.js';
 import { ILogHandler } from './interfaces/handlers/log-handler.interface.js';
 import { ILogFormatter } from './interfaces/formatters/log-formatter.interface.js';
 import { ILogProcessor } from './interfaces/processors/log-processor.interface.js';
 import { IEventDispatcher } from './interfaces/events/event-dispatcher.interface.js';
-import { LogContext, ChannelOptions, HandlerOptions, FormatterOptions, ProcessorOptions } from './types/types.js';
+import { ILoggingService } from './interfaces/logging/logging-service.interface.js';
+import './types/log-record.type.js';
 import './interfaces/events/log-event.interface.js';
+import './types/log-listener.type.js';
 
 /**
  * LogManager is the main implementation of the ILogManager interface.

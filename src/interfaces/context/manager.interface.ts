@@ -1,4 +1,4 @@
-import type { LogContext } from '../../types/types'
+import type { LogContext } from '../../types/log-context.type'
 
 /**
  * IContextManager defines the contract for context managers.

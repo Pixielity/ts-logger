@@ -1,7 +1,8 @@
 import { injectable } from 'inversify'
-import type { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface'
+
+import type { LogListener } from '../types/log-listener.type'
 import type { ILogEvent } from '../interfaces/events/log-event.interface'
-import type { LogListener } from '../types/types'
+import type { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface'
 
 /**
  * EventDispatcher is an implementation of the IEventDispatcher interface.

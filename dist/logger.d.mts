@@ -1,9 +1,11 @@
-import { LogContext } from './types/types.mjs';
 import { LogLevel } from './enums/log-level.enum.mjs';
+import { LogContext } from './types/log-context.type.mjs';
+import { IEventDispatcher } from './interfaces/events/event-dispatcher.interface.mjs';
 import { ILoggingService } from './interfaces/logging/logging-service.interface.mjs';
 import { ILoggingChannel } from './interfaces/channels/logging-channel.interface.mjs';
-import { IEventDispatcher } from './interfaces/events/event-dispatcher.interface.mjs';
 import './interfaces/events/log-event.interface.mjs';
+import './types/log-listener.type.mjs';
+import './types/log-record.type.mjs';
 
 /**
  * Logger is the main implementation of the ILoggingService interface.

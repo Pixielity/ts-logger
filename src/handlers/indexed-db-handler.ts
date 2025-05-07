@@ -1,8 +1,9 @@
-import { injectable, postConstruct } from 'inversify'
 import Dexie from 'dexie'
-import type { IIndexedDBHandler } from '../interfaces/handlers/indexed-db-handler.interface'
-import type { LogRecord } from '../types/types'
+import { injectable, postConstruct } from 'inversify'
+
 import { HandlerType } from '../enums/handler-type.enum'
+import type { LogRecord } from '../types/log-record.type'
+import type { IIndexedDBHandler } from '../interfaces/handlers/indexed-db-handler.interface'
 
 /**
  * IndexedDBHandler is an implementation of the IIndexedDBHandler interface.

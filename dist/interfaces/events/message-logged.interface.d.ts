@@ -1,6 +1,6 @@
 import { ILogEvent } from './log-event.interface.js';
 import { LogLevel } from '../../enums/log-level.enum.js';
-import { LogContext } from '../../types/types.js';
+import { LogContext } from '../../types/log-context.type.js';
 
 /**
  * IMessageLogged defines the contract for message logged events.

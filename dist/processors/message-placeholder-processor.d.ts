@@ -1,5 +1,6 @@
+import { LogRecord } from '../types/log-record.type.js';
 import { IMessagePlaceholderProcessor } from '../interfaces/processors/message-placeholder-processor.interface.js';
-import { LogRecord } from '../types/types.js';
+import '../types/log-context.type.js';
 import '../interfaces/processors/log-processor.interface.js';
 
 /**
@@ -24,9 +25,12 @@ declare class MessagePlaceholderProcessor implements IMessagePlaceholderProcesso
      */
     process(record: LogRecord): LogRecord;
     /**
-     * Replace placeholders in a message with context values
-     * @param message The message to process
-     * @param context The context values
+     * Replace placeholders in a message with corresponding context values.
+     * The placeholder format is dynamically determined (e.g., '{key}', '%key%', '{{var}}', etc.).
+     *
+     * @param message - The input message string that may contain placeholders.
+     * @param context - A dictionary of keys and values used to replace placeholders.
+     * @returns The message with placeholders replaced by context values.
      */
     private replacePlaceholders;
     /**

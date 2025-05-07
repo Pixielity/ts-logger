@@ -1,8 +1,9 @@
 import { injectable } from 'inversify'
-import type { ISlackWebhookHandler } from '../interfaces/handlers/slack-webhook-handler.interface'
-import { HttpHandler } from './http-handler'
-import type { LogRecord } from '../types/types'
+
 import { LogLevelEmoji } from '../constants'
+import { HttpHandler } from './http-handler'
+import type { LogRecord } from '../types/log-record.type'
+import type { ISlackWebhookHandler } from '../interfaces/handlers/slack-webhook-handler.interface'
 
 /**
  * SlackWebhookHandler is an implementation of the ISlackWebhookHandler interface.

@@ -1,5 +1,5 @@
 import { IContextDehydrating } from '../../interfaces/events/dehydrating.interface.js';
-import { LogContext } from '../../types/types.js';
+import { LogContext } from '../../types/log-context.type.js';
 import '../../interfaces/events/log-event.interface.js';
 
 /**

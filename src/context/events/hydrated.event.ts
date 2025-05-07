@@ -1,5 +1,5 @@
 import type { IContextHydrated } from '../../interfaces/events/hydrated.interface'
-import type { LogContext } from '../../types/types'
+import type { LogContext } from '../../types/log-context.type'
 
 /**
  * ContextHydratedEvent is an implementation of the IContextHydrated interface.

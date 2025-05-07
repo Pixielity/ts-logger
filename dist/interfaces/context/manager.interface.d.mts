@@ -1,4 +1,4 @@
-import { LogContext } from '../../types/types.mjs';
+import { LogContext } from '../../types/log-context.type.mjs';
 
 /**
  * IContextManager defines the contract for context managers.

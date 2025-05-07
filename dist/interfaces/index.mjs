@@ -8,35 +8,17 @@
  */
 
 
-// src/interfaces/channels/logging-channel.interface.ts
-var ILoggingChannel;
-((ILoggingChannel2) => {
-  ILoggingChannel2.$ = Symbol.for("ILoggingChannel");
-})(ILoggingChannel || (ILoggingChannel = {}));
-
-// src/interfaces/channels/single-channel.interface.ts
-var ISingleChannel;
-((ISingleChannel2) => {
-  ISingleChannel2.$ = Symbol.for("ISingleChannel");
-})(ISingleChannel || (ISingleChannel = {}));
-
-// src/interfaces/channels/stack-channel.interface.ts
-var IStackChannel;
-((IStackChannel2) => {
-  IStackChannel2.$ = Symbol.for("IStackChannel");
-})(IStackChannel || (IStackChannel = {}));
-
 // src/interfaces/context/manager.interface.ts
 var IContextManager;
 ((IContextManager2) => {
   IContextManager2.$ = Symbol.for("IContextManager");
 })(IContextManager || (IContextManager = {}));
 
-// src/interfaces/context/management.interface.ts
-var IContextManagement;
-((IContextManagement2) => {
-  IContextManagement2.$ = Symbol.for("IContextManagement");
-})(IContextManagement || (IContextManagement = {}));
+// src/interfaces/utils/exception-formatter.interface.ts
+var IExceptionFormatter;
+((IExceptionFormatter2) => {
+  IExceptionFormatter2.$ = Symbol.for("IExceptionFormatter");
+})(IExceptionFormatter || (IExceptionFormatter = {}));
 
 // src/interfaces/events/dehydrating.interface.ts
 var IContextDehydrating;
@@ -68,29 +50,41 @@ var IMessageLogged;
   IMessageLogged2.$ = Symbol.for("IMessageLogged");
 })(IMessageLogged || (IMessageLogged = {}));
 
-// src/interfaces/formatters/json-formatter.interface.ts
-var IJsonFormatter;
-((IJsonFormatter2) => {
-  IJsonFormatter2.$ = Symbol.for("IJsonFormatter");
-})(IJsonFormatter || (IJsonFormatter = {}));
+// src/interfaces/logging/manager.interface.ts
+var ILogManager;
+((ILogManager2) => {
+  ILogManager2.$ = Symbol.for("ILogManager");
+})(ILogManager || (ILogManager = {}));
 
-// src/interfaces/formatters/line-formatter.interface.ts
-var ILineFormatter;
-((ILineFormatter2) => {
-  ILineFormatter2.$ = Symbol.for("ILineFormatter");
-})(ILineFormatter || (ILineFormatter = {}));
+// src/interfaces/logging/logging-service.interface.ts
+var ILoggingService;
+((ILoggingService2) => {
+  ILoggingService2.$ = Symbol.for("ILoggingService");
+})(ILoggingService || (ILoggingService = {}));
 
-// src/interfaces/formatters/log-formatter.interface.ts
-var ILogFormatter;
-((ILogFormatter2) => {
-  ILogFormatter2.$ = Symbol.for("ILogFormatter");
-})(ILogFormatter || (ILogFormatter = {}));
+// src/interfaces/context/management.interface.ts
+var IContextManagement;
+((IContextManagement2) => {
+  IContextManagement2.$ = Symbol.for("IContextManagement");
+})(IContextManagement || (IContextManagement = {}));
 
-// src/interfaces/formatters/simple-formatter.interface.ts
-var ISimpleFormatter;
-((ISimpleFormatter2) => {
-  ISimpleFormatter2.$ = Symbol.for("ISimpleFormatter");
-})(ISimpleFormatter || (ISimpleFormatter = {}));
+// src/interfaces/channels/logging-channel.interface.ts
+var ILoggingChannel;
+((ILoggingChannel2) => {
+  ILoggingChannel2.$ = Symbol.for("ILoggingChannel");
+})(ILoggingChannel || (ILoggingChannel = {}));
+
+// src/interfaces/channels/single-channel.interface.ts
+var ISingleChannel;
+((ISingleChannel2) => {
+  ISingleChannel2.$ = Symbol.for("ISingleChannel");
+})(ISingleChannel || (ISingleChannel = {}));
+
+// src/interfaces/channels/stack-channel.interface.ts
+var IStackChannel;
+((IStackChannel2) => {
+  IStackChannel2.$ = Symbol.for("IStackChannel");
+})(IStackChannel || (IStackChannel = {}));
 
 // src/interfaces/handlers/console-handler.interface.ts
 var IConsoleHandler;
@@ -146,17 +140,29 @@ var ISyslogHandler;
   ISyslogHandler2.$ = Symbol.for("ISyslogHandler");
 })(ISyslogHandler || (ISyslogHandler = {}));
 
-// src/interfaces/logging/manager.interface.ts
-var ILogManager;
-((ILogManager2) => {
-  ILogManager2.$ = Symbol.for("ILogManager");
-})(ILogManager || (ILogManager = {}));
+// src/interfaces/formatters/json-formatter.interface.ts
+var IJsonFormatter;
+((IJsonFormatter2) => {
+  IJsonFormatter2.$ = Symbol.for("IJsonFormatter");
+})(IJsonFormatter || (IJsonFormatter = {}));
 
-// src/interfaces/logging/logging-service.interface.ts
-var ILoggingService;
-((ILoggingService2) => {
-  ILoggingService2.$ = Symbol.for("ILoggingService");
-})(ILoggingService || (ILoggingService = {}));
+// src/interfaces/formatters/line-formatter.interface.ts
+var ILineFormatter;
+((ILineFormatter2) => {
+  ILineFormatter2.$ = Symbol.for("ILineFormatter");
+})(ILineFormatter || (ILineFormatter = {}));
+
+// src/interfaces/formatters/log-formatter.interface.ts
+var ILogFormatter;
+((ILogFormatter2) => {
+  ILogFormatter2.$ = Symbol.for("ILogFormatter");
+})(ILogFormatter || (ILogFormatter = {}));
+
+// src/interfaces/formatters/simple-formatter.interface.ts
+var ISimpleFormatter;
+((ISimpleFormatter2) => {
+  ISimpleFormatter2.$ = Symbol.for("ISimpleFormatter");
+})(ISimpleFormatter || (ISimpleFormatter = {}));
 
 // src/interfaces/processors/context-log-processor.interface.ts
 var IContextLogProcessor;
@@ -175,12 +181,6 @@ var IMessagePlaceholderProcessor;
 ((IMessagePlaceholderProcessor2) => {
   IMessagePlaceholderProcessor2.$ = Symbol.for("IMessagePlaceholderProcessor");
 })(IMessagePlaceholderProcessor || (IMessagePlaceholderProcessor = {}));
-
-// src/interfaces/utils/exception-formatter.interface.ts
-var IExceptionFormatter;
-((IExceptionFormatter2) => {
-  IExceptionFormatter2.$ = Symbol.for("IExceptionFormatter");
-})(IExceptionFormatter || (IExceptionFormatter = {}));
 
 export { IConsoleHandler, IContextDehydrating, IContextHydrated, IContextLogProcessor, IContextManagement, IContextManager, IErrorLogHandler, IEventDispatcher, IExceptionFormatter, IFingersCrossedHandler, IHttpHandler, IIndexedDBHandler, IJsonFormatter, ILineFormatter, ILocalStorageHandler, ILogEvent, ILogFormatter, ILogHandler, ILogManager, ILogProcessor, ILoggingChannel, ILoggingService, IMessageLogged, IMessagePlaceholderProcessor, ISimpleFormatter, ISingleChannel, ISlackWebhookHandler, IStackChannel, ISyslogHandler };
 //# sourceMappingURL=index.mjs.map

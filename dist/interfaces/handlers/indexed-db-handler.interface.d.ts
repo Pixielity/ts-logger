@@ -1,5 +1,6 @@
 import { ILogHandler } from './log-handler.interface.js';
-import '../../types/types.js';
+import '../../types/log-record.type.js';
+import '../../types/log-context.type.js';
 
 /**
  * IIndexedDBHandler defines the contract for IndexedDB handlers.

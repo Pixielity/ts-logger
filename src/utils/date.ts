@@ -25,6 +25,8 @@ export function getDateFormatString(format: DateFormat, customFormat?: string): 
       return 'MM/DD/YYYY'
     case DateFormat.HH_MM_SS:
       return 'HH:mm:ss'
+    case DateFormat.YYYY_MM_DD_HH_MM_SS_MILLI:
+      return 'YYYY-MM-DD HH:mm:ss.SSS' // Handle milliseconds format here
     case DateFormat.CUSTOM:
       return customFormat || 'YYYY-MM-DD HH:mm:ss'
     default:
@@ -33,36 +35,43 @@ export function getDateFormatString(format: DateFormat, customFormat?: string): 
 }
 
 /**
- * Format a date according to a DateFormat enum value
- * @param date The date to format
- * @param format The DateFormat enum value
- * @param customFormat The custom format string (if format is DateFormat.CUSTOM)
+ * Formats a given date into a string based on the provided format.
+ *
+ * @param {Date} date - The date to be formatted.
+ * @param {DateFormat} format - The format to use for the date. It can be a predefined format from the DateFormat enum.
+ * @param {string} [customFormat] - Optional custom format string. If not provided, the predefined format is used.
+ * @returns {string} - A formatted string representing the date.
+ *
+ * @example
+ * const formattedDate = formatDate(new Date(), DateFormat.FULL);
+ * console.log(formattedDate); // Outputs the formatted date string in the specified format
  */
 export function formatDate(date: Date, format: DateFormat, customFormat?: string): string {
+  // Determine the format string to be used based on the input format and optional custom format.
   const formatString = getDateFormatString(format, customFormat)
 
-  // Simple date formatting based on the format string
-  // In a real implementation, you might use a library like date-fns
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, '0')
-  const day = String(date.getDate()).padStart(2, '0')
-  const hours = String(date.getHours()).padStart(2, '0')
-  const minutes = String(date.getMinutes()).padStart(2, '0')
-  const seconds = String(date.getSeconds()).padStart(2, '0')
-  const milliseconds = String(date.getMilliseconds()).padStart(3, '0')
+  // Extract individual date components (UTC-based) from the input date.
+  const year = date.getUTCFullYear()
+  const day = String(date.getUTCDate()).padStart(2, '0')
+  const hours = String(date.getUTCHours()).padStart(2, '0')
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0')
+  const minutes = String(date.getUTCMinutes()).padStart(2, '0')
+  const seconds = String(date.getUTCSeconds()).padStart(2, '0')
+  const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0')
 
-  // Handle special cases
+  // If the specified format is UNIX, return the timestamp in seconds.
   if (format === DateFormat.UNIX) {
+    // Return the timestamp in seconds
     return Math.floor(date.getTime() / 1000).toString()
   }
 
-  // Replace tokens in the format string
+  // Replace placeholders in the format string with actual date components (e.g., 'YYYY', 'MM', etc.).
   return formatString
-    .replace('YYYY', String(year))
-    .replace('MM', month)
-    .replace('DD', day)
-    .replace('HH', hours)
-    .replace('mm', minutes)
-    .replace('ss', seconds)
-    .replace('SSS', milliseconds)
+    .replace('YYYY', String(year)) // Replace 'YYYY' with the year
+    .replace('MM', month) // Replace 'MM' with the month (2 digits)
+    .replace('DD', day) // Replace 'DD' with the day (2 digits)
+    .replace('HH', hours) // Replace 'HH' with hours (2 digits)
+    .replace('mm', minutes) // Replace 'mm' with minutes (2 digits)
+    .replace('ss', seconds) // Replace 'ss' with seconds (2 digits)
+    .replace('SSS', milliseconds) // Replace 'SSS' with milliseconds (3 digits)
 }

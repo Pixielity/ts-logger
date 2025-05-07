@@ -1,6 +1,6 @@
 import type { ILogEvent } from './log-event.interface'
 import type { LogLevel } from '../../enums/log-level.enum'
-import type { LogContext } from '../../types/types'
+import type { LogContext } from '../../types/log-context.type'
 
 /**
  * IMessageLogged defines the contract for message logged events.

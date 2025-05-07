@@ -42,7 +42,11 @@ declare enum DateFormat {
     /**
      * Custom date format
      */
-    CUSTOM = "custom"
+    CUSTOM = "custom",
+    /**
+     * Year-month-day hour:minute:second format with milliseconds (e.g., 2023-01-01 12:00:00.123)
+     */
+    YYYY_MM_DD_HH_MM_SS_MILLI = "YYYY-MM-DD HH:mm:ss.SSS"
 }
 
 export { DateFormat };

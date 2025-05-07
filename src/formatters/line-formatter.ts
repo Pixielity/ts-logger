@@ -1,10 +1,11 @@
 import { injectable } from 'inversify'
-import type { ILineFormatter } from '../interfaces/formatters/line-formatter.interface'
-import type { LogRecord } from '../types/types'
-import { LogLevelEmoji, LogLevelColor } from '../constants/constants'
-import { FormatterType } from '../enums/formatter-type.enum'
+
 import { formatDate } from '../utils/date'
 import { DateFormat } from '../enums/date-format.enum'
+import type { LogRecord } from '../types/log-record.type'
+import { LogLevelEmoji, LogLevelColor } from '../constants'
+import { FormatterType } from '../enums/formatter-type.enum'
+import type { ILineFormatter } from '../interfaces/formatters/line-formatter.interface'
 
 /**
  * LineFormatter is an implementation of the ILineFormatter interface.

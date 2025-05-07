@@ -1,12 +1,14 @@
 export { SingleChannel } from './single-channel.js';
 export { StackChannel } from './stack-channel.js';
+import '../types/log-record.type.js';
+import '../types/log-context.type.js';
 import '../enums/log-level.enum.js';
+import '../interfaces/handlers/log-handler.interface.js';
 import '../interfaces/channels/single-channel.interface.js';
 import '../interfaces/channels/logging-channel.interface.js';
-import '../types/types.js';
-import '../interfaces/handlers/log-handler.interface.js';
 import '../interfaces/formatters/log-formatter.interface.js';
 import '../interfaces/processors/log-processor.interface.js';
-import '../interfaces/channels/stack-channel.interface.js';
 import '../interfaces/events/event-dispatcher.interface.js';
 import '../interfaces/events/log-event.interface.js';
+import '../types/log-listener.type.js';
+import '../interfaces/channels/stack-channel.interface.js';

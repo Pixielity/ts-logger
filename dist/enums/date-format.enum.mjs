@@ -20,6 +20,7 @@ var DateFormat = /* @__PURE__ */ ((DateFormat2) => {
   DateFormat2["MM_DD_YYYY"] = "MM/DD/YYYY";
   DateFormat2["HH_MM_SS"] = "HH:mm:ss";
   DateFormat2["CUSTOM"] = "custom";
+  DateFormat2["YYYY_MM_DD_HH_MM_SS_MILLI"] = "YYYY-MM-DD HH:mm:ss.SSS";
   return DateFormat2;
 })(DateFormat || {});
 

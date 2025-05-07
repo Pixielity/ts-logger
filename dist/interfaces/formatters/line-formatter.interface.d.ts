@@ -1,5 +1,6 @@
 import { ILogFormatter } from './log-formatter.interface.js';
-import '../../types/types.js';
+import '../../types/log-record.type.js';
+import '../../types/log-context.type.js';
 
 /**
  * ILineFormatter defines the contract for line formatters.

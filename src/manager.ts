@@ -1,22 +1,25 @@
 import { injectable } from 'inversify'
-import type { LogLevel } from './enums/log-level.enum'
-import type { LogChannelType } from './enums/log-channel-type.enum'
-import type { ILogManager } from './interfaces/logging/manager.interface'
-import type { ILoggingService } from './interfaces/logging/logging-service.interface'
-import type { ILoggingChannel } from './interfaces/channels/logging-channel.interface'
-import type { ILogHandler } from './interfaces/handlers/log-handler.interface'
-import type { ILogFormatter } from './interfaces/formatters/log-formatter.interface'
-import type { ILogProcessor } from './interfaces/processors/log-processor.interface'
-import type { IEventDispatcher } from './interfaces/events/event-dispatcher.interface'
+
 import type {
   ChannelOptions,
   HandlerOptions,
   FormatterOptions,
   ProcessorOptions,
   LogContext,
-} from './types/types'
+} from './types'
 import { Logger } from './logger'
+
+import type { LogLevel } from './enums/log-level.enum'
 import { loggingConfig } from './config/logging-config'
+import type { LogChannelType } from './enums/log-channel-type.enum'
+
+import type { ILogManager } from './interfaces/logging/manager.interface'
+import type { ILogHandler } from './interfaces/handlers/log-handler.interface'
+import type { ILogFormatter } from './interfaces/formatters/log-formatter.interface'
+import type { ILogProcessor } from './interfaces/processors/log-processor.interface'
+import type { IEventDispatcher } from './interfaces/events/event-dispatcher.interface'
+import type { ILoggingService } from './interfaces/logging/logging-service.interface'
+import type { ILoggingChannel } from './interfaces/channels/logging-channel.interface'
 
 /**
  * LogManager is the main implementation of the ILogManager interface.
@@ -176,13 +179,7 @@ export class LogManager implements ILogManager {
    * @param name The channel name
    */
   public channel(name?: string): ILoggingService {
-    const channelName = name || this._defaultChannel
-
-    if (!this._channels[channelName]) {
-      throw new Error(`Channel [${channelName}] not found.`)
-    }
-
-    return this._channels[channelName]
+    return this.driver(name)
   }
 
   /**
@@ -190,7 +187,7 @@ export class LogManager implements ILogManager {
    * @param name The stack name
    */
   public stack(name: string): ILoggingService {
-    return this.channel(name)
+    return this.driver(name)
   }
 
   /**
@@ -198,7 +195,13 @@ export class LogManager implements ILogManager {
    * @param name The driver name
    */
   public driver(name?: string): ILoggingService {
-    return this.channel(name)
+    const channelName = name || this._defaultChannel
+
+    if (!this._channels[channelName]) {
+      throw new Error(`Channel [${channelName}] not found.`)
+    }
+
+    return this._channels[channelName]
   }
 
   /**

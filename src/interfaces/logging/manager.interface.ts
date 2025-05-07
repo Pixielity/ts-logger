@@ -1,13 +1,13 @@
-import type { ILoggingService } from './logging-service.interface'
-import type { LogLevel } from '../../enums/log-level.enum'
-import type { LogChannelType } from '../../enums/log-channel-type.enum'
 import type {
+  LogContext,
   ChannelOptions,
   HandlerOptions,
   FormatterOptions,
   ProcessorOptions,
-  LogContext,
-} from '../../types/types'
+} from '../../types'
+import type { LogLevel } from '../../enums/log-level.enum'
+import type { ILoggingService } from './logging-service.interface'
+import type { LogChannelType } from '../../enums/log-channel-type.enum'
 
 /**
  * ILogManager defines the contract for log managers.

@@ -1,5 +1,5 @@
 import type { ILogEvent } from './log-event.interface'
-import type { LogListener } from '../../types/types'
+import type { LogListener } from '../../types/log-listener.type'
 
 /**
  * IEventDispatcher defines the contract for event dispatchers.

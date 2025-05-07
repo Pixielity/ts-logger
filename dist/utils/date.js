@@ -31,6 +31,9 @@ function getDateFormatString(format, customFormat) {
       return "MM/DD/YYYY";
     case "HH:mm:ss" /* HH_MM_SS */:
       return "HH:mm:ss";
+    case "YYYY-MM-DD HH:mm:ss.SSS" /* YYYY_MM_DD_HH_MM_SS_MILLI */:
+      return "YYYY-MM-DD HH:mm:ss.SSS";
+    // Handle milliseconds format here
     case "custom" /* CUSTOM */:
       return customFormat || "YYYY-MM-DD HH:mm:ss";
     default:
@@ -39,13 +42,13 @@ function getDateFormatString(format, customFormat) {
 }
 function formatDate(date, format, customFormat) {
   const formatString = getDateFormatString(format, customFormat);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
-  const milliseconds = String(date.getMilliseconds()).padStart(3, "0");
+  const year = date.getUTCFullYear();
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+  const seconds = String(date.getUTCSeconds()).padStart(2, "0");
+  const milliseconds = String(date.getUTCMilliseconds()).padStart(3, "0");
   if (format === "UNIX" /* UNIX */) {
     return Math.floor(date.getTime() / 1e3).toString();
   }

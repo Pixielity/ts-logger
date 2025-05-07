@@ -1,5 +1,6 @@
 import { ILogHandler } from './log-handler.interface.mjs';
-import '../../types/types.mjs';
+import '../../types/log-record.type.mjs';
+import '../../types/log-context.type.mjs';
 
 /**
  * IErrorLogHandler defines the contract for error log handlers.

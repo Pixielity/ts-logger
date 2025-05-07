@@ -1,7 +1,8 @@
 import { injectable } from 'inversify'
-import type { ISyslogHandler } from '../interfaces/handlers/syslog-handler.interface'
-import type { LogRecord } from '../types/types'
+
 import { LogLevel } from '../enums/log-level.enum'
+import type { LogRecord } from '../types/log-record.type'
+import type { ISyslogHandler } from '../interfaces/handlers/syslog-handler.interface'
 
 /**
  * SyslogHandler is an implementation of the ISyslogHandler interface.

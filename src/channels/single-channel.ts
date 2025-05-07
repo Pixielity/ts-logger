@@ -1,10 +1,11 @@
 import { injectable } from 'inversify'
+
+import type { LogContext, LogRecord } from '../types'
 import type { LogLevel } from '../enums/log-level.enum'
-import type { ISingleChannel } from '../interfaces/channels/single-channel.interface'
 import type { ILogHandler } from '../interfaces/handlers/log-handler.interface'
+import type { ISingleChannel } from '../interfaces/channels/single-channel.interface'
 import type { ILogFormatter } from '../interfaces/formatters/log-formatter.interface'
 import type { ILogProcessor } from '../interfaces/processors/log-processor.interface'
-import type { LogContext, LogRecord } from '../types/types'
 
 /**
  * SingleChannel is an implementation of the ISingleChannel interface.

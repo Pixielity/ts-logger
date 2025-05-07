@@ -1,6 +1,7 @@
 import { ILogHandler } from './log-handler.interface.js';
 import { LogLevel } from '../../enums/log-level.enum.js';
-import '../../types/types.js';
+import '../../types/log-record.type.js';
+import '../../types/log-context.type.js';
 
 /**
  * IFingersCrossedHandler defines the contract for fingers-crossed handlers.

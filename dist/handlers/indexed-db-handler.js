@@ -1,7 +1,7 @@
 'use strict';
 
-var inversify = require('inversify');
 var Dexie = require('dexie');
+var inversify = require('inversify');
 
 function _interopDefault (e) { return e && e.__esModule ? e : { default: e }; }
 

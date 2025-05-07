@@ -1,5 +1,5 @@
 import { ILogEvent } from './log-event.interface.js';
-import { LogContext } from '../../types/types.js';
+import { LogContext } from '../../types/log-context.type.js';
 
 /**
  * IContextHydrated defines the contract for context hydrated events.

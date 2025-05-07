@@ -10,35 +10,17 @@
  */
 
 
-// src/interfaces/channels/logging-channel.interface.ts
-exports.ILoggingChannel = void 0;
-((ILoggingChannel2) => {
-  ILoggingChannel2.$ = Symbol.for("ILoggingChannel");
-})(exports.ILoggingChannel || (exports.ILoggingChannel = {}));
-
-// src/interfaces/channels/single-channel.interface.ts
-exports.ISingleChannel = void 0;
-((ISingleChannel2) => {
-  ISingleChannel2.$ = Symbol.for("ISingleChannel");
-})(exports.ISingleChannel || (exports.ISingleChannel = {}));
-
-// src/interfaces/channels/stack-channel.interface.ts
-exports.IStackChannel = void 0;
-((IStackChannel2) => {
-  IStackChannel2.$ = Symbol.for("IStackChannel");
-})(exports.IStackChannel || (exports.IStackChannel = {}));
-
 // src/interfaces/context/manager.interface.ts
 exports.IContextManager = void 0;
 ((IContextManager2) => {
   IContextManager2.$ = Symbol.for("IContextManager");
 })(exports.IContextManager || (exports.IContextManager = {}));
 
-// src/interfaces/context/management.interface.ts
-exports.IContextManagement = void 0;
-((IContextManagement2) => {
-  IContextManagement2.$ = Symbol.for("IContextManagement");
-})(exports.IContextManagement || (exports.IContextManagement = {}));
+// src/interfaces/utils/exception-formatter.interface.ts
+exports.IExceptionFormatter = void 0;
+((IExceptionFormatter2) => {
+  IExceptionFormatter2.$ = Symbol.for("IExceptionFormatter");
+})(exports.IExceptionFormatter || (exports.IExceptionFormatter = {}));
 
 // src/interfaces/events/dehydrating.interface.ts
 exports.IContextDehydrating = void 0;
@@ -70,29 +52,41 @@ exports.IMessageLogged = void 0;
   IMessageLogged2.$ = Symbol.for("IMessageLogged");
 })(exports.IMessageLogged || (exports.IMessageLogged = {}));
 
-// src/interfaces/formatters/json-formatter.interface.ts
-exports.IJsonFormatter = void 0;
-((IJsonFormatter2) => {
-  IJsonFormatter2.$ = Symbol.for("IJsonFormatter");
-})(exports.IJsonFormatter || (exports.IJsonFormatter = {}));
+// src/interfaces/logging/manager.interface.ts
+exports.ILogManager = void 0;
+((ILogManager2) => {
+  ILogManager2.$ = Symbol.for("ILogManager");
+})(exports.ILogManager || (exports.ILogManager = {}));
 
-// src/interfaces/formatters/line-formatter.interface.ts
-exports.ILineFormatter = void 0;
-((ILineFormatter2) => {
-  ILineFormatter2.$ = Symbol.for("ILineFormatter");
-})(exports.ILineFormatter || (exports.ILineFormatter = {}));
+// src/interfaces/logging/logging-service.interface.ts
+exports.ILoggingService = void 0;
+((ILoggingService2) => {
+  ILoggingService2.$ = Symbol.for("ILoggingService");
+})(exports.ILoggingService || (exports.ILoggingService = {}));
 
-// src/interfaces/formatters/log-formatter.interface.ts
-exports.ILogFormatter = void 0;
-((ILogFormatter2) => {
-  ILogFormatter2.$ = Symbol.for("ILogFormatter");
-})(exports.ILogFormatter || (exports.ILogFormatter = {}));
+// src/interfaces/context/management.interface.ts
+exports.IContextManagement = void 0;
+((IContextManagement2) => {
+  IContextManagement2.$ = Symbol.for("IContextManagement");
+})(exports.IContextManagement || (exports.IContextManagement = {}));
 
-// src/interfaces/formatters/simple-formatter.interface.ts
-exports.ISimpleFormatter = void 0;
-((ISimpleFormatter2) => {
-  ISimpleFormatter2.$ = Symbol.for("ISimpleFormatter");
-})(exports.ISimpleFormatter || (exports.ISimpleFormatter = {}));
+// src/interfaces/channels/logging-channel.interface.ts
+exports.ILoggingChannel = void 0;
+((ILoggingChannel2) => {
+  ILoggingChannel2.$ = Symbol.for("ILoggingChannel");
+})(exports.ILoggingChannel || (exports.ILoggingChannel = {}));
+
+// src/interfaces/channels/single-channel.interface.ts
+exports.ISingleChannel = void 0;
+((ISingleChannel2) => {
+  ISingleChannel2.$ = Symbol.for("ISingleChannel");
+})(exports.ISingleChannel || (exports.ISingleChannel = {}));
+
+// src/interfaces/channels/stack-channel.interface.ts
+exports.IStackChannel = void 0;
+((IStackChannel2) => {
+  IStackChannel2.$ = Symbol.for("IStackChannel");
+})(exports.IStackChannel || (exports.IStackChannel = {}));
 
 // src/interfaces/handlers/console-handler.interface.ts
 exports.IConsoleHandler = void 0;
@@ -148,17 +142,29 @@ exports.ISyslogHandler = void 0;
   ISyslogHandler2.$ = Symbol.for("ISyslogHandler");
 })(exports.ISyslogHandler || (exports.ISyslogHandler = {}));
 
-// src/interfaces/logging/manager.interface.ts
-exports.ILogManager = void 0;
-((ILogManager2) => {
-  ILogManager2.$ = Symbol.for("ILogManager");
-})(exports.ILogManager || (exports.ILogManager = {}));
+// src/interfaces/formatters/json-formatter.interface.ts
+exports.IJsonFormatter = void 0;
+((IJsonFormatter2) => {
+  IJsonFormatter2.$ = Symbol.for("IJsonFormatter");
+})(exports.IJsonFormatter || (exports.IJsonFormatter = {}));
 
-// src/interfaces/logging/logging-service.interface.ts
-exports.ILoggingService = void 0;
-((ILoggingService2) => {
-  ILoggingService2.$ = Symbol.for("ILoggingService");
-})(exports.ILoggingService || (exports.ILoggingService = {}));
+// src/interfaces/formatters/line-formatter.interface.ts
+exports.ILineFormatter = void 0;
+((ILineFormatter2) => {
+  ILineFormatter2.$ = Symbol.for("ILineFormatter");
+})(exports.ILineFormatter || (exports.ILineFormatter = {}));
+
+// src/interfaces/formatters/log-formatter.interface.ts
+exports.ILogFormatter = void 0;
+((ILogFormatter2) => {
+  ILogFormatter2.$ = Symbol.for("ILogFormatter");
+})(exports.ILogFormatter || (exports.ILogFormatter = {}));
+
+// src/interfaces/formatters/simple-formatter.interface.ts
+exports.ISimpleFormatter = void 0;
+((ISimpleFormatter2) => {
+  ISimpleFormatter2.$ = Symbol.for("ISimpleFormatter");
+})(exports.ISimpleFormatter || (exports.ISimpleFormatter = {}));
 
 // src/interfaces/processors/context-log-processor.interface.ts
 exports.IContextLogProcessor = void 0;
@@ -177,11 +183,5 @@ exports.IMessagePlaceholderProcessor = void 0;
 ((IMessagePlaceholderProcessor2) => {
   IMessagePlaceholderProcessor2.$ = Symbol.for("IMessagePlaceholderProcessor");
 })(exports.IMessagePlaceholderProcessor || (exports.IMessagePlaceholderProcessor = {}));
-
-// src/interfaces/utils/exception-formatter.interface.ts
-exports.IExceptionFormatter = void 0;
-((IExceptionFormatter2) => {
-  IExceptionFormatter2.$ = Symbol.for("IExceptionFormatter");
-})(exports.IExceptionFormatter || (exports.IExceptionFormatter = {}));
 //# sourceMappingURL=index.js.map
 //# sourceMappingURL=index.js.map

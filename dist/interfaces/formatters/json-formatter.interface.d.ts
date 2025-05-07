@@ -1,5 +1,6 @@
 import { ILogFormatter } from './log-formatter.interface.js';
-import '../../types/types.js';
+import '../../types/log-record.type.js';
+import '../../types/log-context.type.js';
 
 /**
  * IJsonFormatter defines the contract for JSON formatters.

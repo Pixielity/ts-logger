@@ -1,5 +1,6 @@
 import { ILogProcessor } from './log-processor.interface.mjs';
-import { LogContext } from '../../types/types.mjs';
+import { LogContext } from '../../types/log-context.type.mjs';
+import '../../types/log-record.type.mjs';
 
 /**
  * IContextLogProcessor defines the contract for context log processors.

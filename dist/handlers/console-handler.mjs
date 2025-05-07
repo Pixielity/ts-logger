@@ -17,16 +17,8 @@ var __decorateClass = (decorators, target, key, kind) => {
       result = (decorator(result)) || result;
   return result;
 };
-var LogLevelEmoji = {
-  ["emergency" /* EMERGENCY */]: "\u{1F6A8}",
-  ["alert" /* ALERT */]: "\u{1F514}",
-  ["critical" /* CRITICAL */]: "\u2757",
-  ["error" /* ERROR */]: "\u{1F534}",
-  ["warning" /* WARNING */]: "\u26A0\uFE0F",
-  ["notice" /* NOTICE */]: "\u{1F4DD}",
-  ["info" /* INFO */]: "\u2705",
-  ["debug" /* DEBUG */]: "\u{1F6E0}\uFE0F"
-};
+
+// src/constants/log-level-color.constant.ts
 var LogLevelColor = {
   ["emergency" /* EMERGENCY */]: "#FF0000",
   // Red
@@ -44,6 +36,18 @@ var LogLevelColor = {
   // LimeGreen
   ["debug" /* DEBUG */]: "#808080"
   // Gray
+};
+
+// src/constants/log-level-emoji.constant.ts
+var LogLevelEmoji = {
+  ["emergency" /* EMERGENCY */]: "\u{1F6A8}",
+  ["alert" /* ALERT */]: "\u{1F514}",
+  ["critical" /* CRITICAL */]: "\u2757",
+  ["error" /* ERROR */]: "\u{1F534}",
+  ["warning" /* WARNING */]: "\u26A0\uFE0F",
+  ["notice" /* NOTICE */]: "\u{1F4DD}",
+  ["info" /* INFO */]: "\u2705",
+  ["debug" /* DEBUG */]: "\u{1F6E0}\uFE0F"
 };
 
 // src/handlers/console-handler.ts

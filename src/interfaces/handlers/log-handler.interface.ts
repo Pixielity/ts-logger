@@ -1,4 +1,4 @@
-import type { LogRecord } from '../../types/types'
+import type { LogRecord } from '../../types/log-record.type'
 
 /**
  * ILogHandler defines the contract for log handlers.

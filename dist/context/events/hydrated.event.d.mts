@@ -1,5 +1,5 @@
 import { IContextHydrated } from '../../interfaces/events/hydrated.interface.mjs';
-import { LogContext } from '../../types/types.mjs';
+import { LogContext } from '../../types/log-context.type.mjs';
 import '../../interfaces/events/log-event.interface.mjs';
 
 /**

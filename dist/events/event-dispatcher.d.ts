@@ -1,6 +1,6 @@
-import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface.js';
+import { LogListener } from '../types/log-listener.type.js';
 import { ILogEvent } from '../interfaces/events/log-event.interface.js';
-import { LogListener } from '../types/types.js';
+import { IEventDispatcher } from '../interfaces/events/event-dispatcher.interface.js';
 
 /**
  * EventDispatcher is an implementation of the IEventDispatcher interface.
