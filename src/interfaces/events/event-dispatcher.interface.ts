@@ -1,0 +1,56 @@
+import type { ILogEvent } from './log-event.interface'
+import type { LogListener } from '../../types/types'
+
+/**
+ * IEventDispatcher defines the contract for event dispatchers.
+ * It provides methods for dispatching events and managing event listeners.
+ */
+export interface IEventDispatcher {
+  /**
+   * Dispatch an event
+   * @param event The event to dispatch
+   */
+  dispatch(event: ILogEvent): void
+
+  /**
+   * Add a listener for an event
+   * @param eventName The event name
+   * @param listener The event listener
+   */
+  addListener(eventName: string, listener: LogListener): void
+
+  /**
+   * Remove a listener for an event
+   * @param eventName The event name
+   * @param listener The event listener
+   */
+  removeListener(eventName: string, listener: LogListener): void
+
+  /**
+   * Get all listeners for an event
+   * @param eventName The event name
+   */
+  getListeners(eventName: string): LogListener[]
+
+  /**
+   * Check if an event has listeners
+   * @param eventName The event name
+   */
+  hasListeners(eventName: string): boolean
+
+  /**
+   * Remove all listeners for an event
+   * @param eventName The event name
+   */
+  clearListeners(eventName: string): void
+}
+
+/**
+ * Namespace containing symbols for dependency injection
+ */
+export namespace IEventDispatcher {
+  /**
+   * Symbol for injecting the event dispatcher
+   */
+  export const $ = Symbol.for('IEventDispatcher')
+}
